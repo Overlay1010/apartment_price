@@ -1,0 +1,19 @@
+{
+  "version": "v1",
+  "status": "experimental_baseline",
+  "model": "XGBClassifier",
+  "target": "향후 3개월 가격 변화율 +3% 초과 상승 여부",
+  "target_column": "상승여부",
+  "validation": "18_month_rolling_backtest",
+  "window_months": 18,
+  "mean_roc_auc": 0.6128639695477802,
+  "mean_balanced_accuracy": 0.5479153410392451,
+  "mean_f1": 0.3759312358563913,
+  "mean_rise_recall": 0.35739819502531367,
+  "min_roc_auc": 0.42181818181818176,
+  "max_roc_auc": 0.7420376233935556,
+  "final_train_start": "2024-10",
+  "final_train_end": "2026-03",
+  "final_train_rows": 450,
+  "feature_count": 51
+}

@@ -1,7 +1,9 @@
 {
   "version": "v1",
+  "status": "structural_baseline",
   "algorithm": "KMeans",
   "unit": "apartment_complex",
+  "train_period": "2021-07 ~ 2025-12",
   "k": 3,
   "features": [
     "전용면적",
@@ -16,6 +18,9 @@
   ],
   "silhouette": 0.264640065287336,
   "random_state": 42,
+  "complex_count": 7581,
+  "test_complex_coverage_pct": 94.2437475188567,
+  "test_transaction_coverage_pct": 97.7078015618287,
   "cluster_names": {
     "0": "소형·신축 역세권형",
     "1": "일반 주거형",

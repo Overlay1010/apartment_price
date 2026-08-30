@@ -1,4 +1,5 @@
 {
+  "version": "v1",
   "target": "log_price",
   "numeric_features": [
     "전용면적",
@@ -142,5 +143,8 @@
     "전세피처출처_과거3개월",
     "전세피처출처_과거6개월"
   ],
-  "best_estimators": 4352
+  "best_estimators": 4352,
+  "train_end": "2025-06-01",
+  "validation_end": "2025-12-01",
+  "test_end": "2026-06-01"
 }
