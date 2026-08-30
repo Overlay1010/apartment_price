@@ -1,0 +1,24 @@
+{
+  "version": "v1",
+  "algorithm": "KMeans",
+  "unit": "apartment_complex",
+  "k": 3,
+  "features": [
+    "전용면적",
+    "기준연식",
+    "역세권거리_m",
+    "주요일자리거리_m"
+  ],
+  "log_features": [
+    "전용면적",
+    "역세권거리_m",
+    "주요일자리거리_m"
+  ],
+  "silhouette": 0.264640065287336,
+  "random_state": 42,
+  "cluster_names": {
+    "0": "소형·신축 역세권형",
+    "1": "일반 주거형",
+    "2": "업무지·역세권 고가형"
+  }
+}
