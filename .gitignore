@@ -1,1 +1,4 @@
 .env
+
+# 상가(상권)정보 원본 (서울 CSV 25개, 약 6.9GB) — 학원 추출 parquet만 커밋
+data/external/상가정보/
