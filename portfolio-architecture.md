@@ -1,12 +1,16 @@
 # 서울 아파트 분석 포트폴리오 — 아키텍처 및 로드맵
 
-> **현재 진행 상태 (2026-10-05):** V1 군집·회귀·분류 완료 (2026-08-30) → **V2 Feature 진행 중** (01 Market ✅ → 02 School ✅ → 03 Policy → 04 Supply → 05 Demographics → 06 Merge) → V2 모델링 (회귀·군집·분류 통합) → `.py` 모듈화 + 데이터 갱신 파이프라인 → 웹 MVP → AI 엔지니어링 레이어
+> **현재 진행 상태 (2026-10-07):** V1 군집·회귀·분류 완료 (2026-08-30) → **V2 Feature 진행 중** (01 Market ✅ → 02 School ✅ → 03 Policy → 04 Supply → 05 Demographics → 06 Merge) → V2 모델링 (회귀·군집·분류 통합) → `apt-core` 모듈화 + 데이터 갱신 파이프라인 → 웹 MVP (분석 + 사용자 기능) → AI 엔지니어링 레이어
 >
 > **핵심 모델링 구조 (A안, 2026-10-07 확정):** 공통 Feature 레이어 위에 **군집(단지) · 회귀(거래) · 분류(구×월)** 세 모델이 서로 다른 단위로 서고,
 > 검증된 연결만 사용한다. 만드는 순서는 **군집 → 회귀 → 분류**를 유지한다.
 >
 > 저평가 등급은 **회귀 Gap + 오차 범위** 규칙으로 판정하고, 분류 모델은 **지역 3개월 상승 확률**을 예측한다.
 > 회귀의 OOF Gap을 구×월로 집계해 분류 Feature로 넘겨 "앞 단계 결과가 다음 단계 입력"이 되게 한다.
+>
+> **서비스 구조 (2026-10-07 확정):** 모노레포 · Python 통일. **Django**(회원·사용자 기능·운영 Admin) + **FastAPI**(분석·추론 / AI) + **Celery**(알림) + **Prefect**(데이터 파이프라인).
+> 폴더 골격·Compose·서비스별 CI·LLMOps 분리는 [SKN34-4th-1Team](https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN34-4th-1Team)을 참고하고,
+> Spring · RabbitMQ · Elasticsearch · 초기 Kubernetes는 쓰지 않는다. (3장)
 
 ---
 
@@ -93,88 +97,165 @@ V1의 세 모델은 이미 **서로 다른 단위의 독립 모델**이었다.
 
 ---
 
-## 3. 프로젝트 파일 구조
+## 3. 프로젝트 파일 구조 · 서비스 구성
 
-노트북은 **실험·검증**, `src/`는 **같은 로직을 서비스에서 반복 실행**하는 용도다.
-V2 Feature 노트북 하나가 `src/features/` 모듈 하나에 대응한다.
+노트북은 **실험·검증**, `packages/apt-core/`는 **같은 로직을 학습·서빙에서 반복 실행**하는 공용 패키지다.
+V2 Feature 노트북 하나가 `apt_core/features/` 모듈 하나에 대응한다.
+`notebook/` · `data/` · `models/`는 노트북 경로가 깨지지 않도록 현재 위치를 유지한다.
+
+### 3-1. 서비스 구성
+
+| 서비스 | 기술 | 역할 | 데이터 소유 |
+|---|---|---|---|
+| `core-service` | Django + DRF | 회원 · 소셜 로그인 · 관심단지 · 저장 검색 · 내 집 · 임장 노트 · 알림 설정 · 대화 이력 · 행동 로그 + **Django Admin(운영)** | Postgres `core` 스키마 |
+| `analysis-service` | FastAPI | 단지 검색·상세 · 스크리너 · 비교 · 요청 시 추론(면적·층) · SHAP · 유사 단지 | `serving` 스키마 **읽기 전용** |
+| `ai-service` | FastAPI | AI 상담 · 단지 리포트 · 정책 RAG · Guardrail (상태 없음, 대화 이력은 core에 저장) | Qdrant (정책 문서) |
+| `worker` | Celery | 알림 발송(이메일 · 웹푸시 · 카카오 알림톡) · 정책 문서 RAG 재색인 | — |
+| `pipeline` | Prefect | 수집 → Feature → 배치 추론 → 품질 게이트 → 재학습 · 알림 이벤트 발행 | `serving` 스키마 쓰기 |
+| `frontend/web` | React + Vite + Tailwind | 사용자 화면 (지도: Kakao/Naver Map) | — |
+
+**기술 선택 이유**
+
+- **Django — 사용자·운영:** 인증·ORM·마이그레이션·권한이 기본 제공되고, django-allauth(카카오·네이버)와 Celery 조합이 표준이다.
+  Django Admin을 그대로 **운영 백오피스**로 쓴다. (레퍼런스의 별도 ops-service 역할)
+- **FastAPI — 추론·LLM:** Pydantic 스키마, 비동기 처리, 스트리밍 응답에 맞다. xgboost·shap(analysis)과 LLM 의존성(ai)을 서비스로 분리해
+  **"숫자는 ML, 설명은 LLM"(12장) 원칙이 서비스 경계로 드러나게** 한다.
+- **Python 통일:** 모든 서비스가 `apt-core`를 공유해 학습·서빙 불일치(13장)를 한 곳에서 막는다.
+- **쓰지 않는 것:** Spring(사용자 기능은 Django로 충분), RabbitMQ(Redis + Celery로 충분), Elasticsearch(단지명 검색은 `pg_trgm`), 초기 Kubernetes(Compose 배포 후 마지막 단계).
+
+**Django Admin 운영 기능**
+
+- 정책 등록 (13장 "발표 시 수동 등록") → 저장 시 Celery가 RAG 재색인
+- 데이터 품질 게이트 결과 조회 (실패 시 직전 정상 데이터 유지 기록)
+- 모델 승격 승인 (`retrain` 비교 결과 확인 후 승인해야 서빙 버전 교체)
+- LLM 평가 결과 · 알림 발송 내역 · 사용자 관리
+
+**서비스 연결**
 
 ```text
-notebook/v2_5year_notebook/
+[frontend/web]
+      │
+   [nginx]  /api/users/*  → core-service (Django)
+            /api/analysis/* → analysis-service (FastAPI)
+            /api/ai/*       → ai-service (FastAPI) ──Tool 호출──▶ analysis-service
+      │
+   인증: Django가 JWT 발급 → FastAPI 서비스는 같은 키로 검증만 한다
+
+[pipeline] 수집 → Feature → 배치 추론 → serving 스키마
+      └─ "신규 실거래 · 저평가 구간 진입 · 가격 급변" 이벤트 → Redis
+                                         ↓
+                     [worker] core DB에서 관심 사용자 조회 → 알림 발송
+```
+
+- **DB:** Postgres + PostGIS 하나에 스키마 분리 (`core` = Django 소유, `serving` = pipeline 쓰기 / analysis 읽기). 규모가 커지면 인스턴스를 분리한다.
+- **원칙:** 사용자 데이터는 core만 쓰고, 분석 결과는 analysis가 읽기 전용으로 제공한다. 서비스끼리 남의 스키마에 쓰지 않는다.
+- **Redis:** Celery 브로커 · 알림 이벤트 · AI 리포트 캐시(단지 × 월)
+- **행동 로그**(조회 · 관심 · 검색)는 처음부터 쌓는다 → 개인화 추천 학습 데이터
+
+### 3-2. 디렉터리 구조
+
+```text
+notebook/v2_5year_notebook/               # 실험·검증 (위치 유지)
     01_data_collection.ipynb
-    eda/v1/ 01~09                     # V1 Feature (기본·지하철·학교·생활·전월세·금리·정책·통합)
+    eda/v1/ 01~09                         # V1 Feature (기본·지하철·학교·생활·전월세·금리·정책·통합)
     eda/v2/
-        01_market_leading.ipynb       → src/features/market.py
-        02_school_environment.ipynb   → src/collect/school.py (Crosswalk·보정)
-        02b_school_features.ipynb     → src/features/school.py
-        02c_academy_features.ipynb    → src/features/academy.py
-        03_policy.ipynb               → src/features/policy.py
-        04_housing_supply.ipynb       → src/features/supply.py
-        05_demographics.ipynb         → src/features/demographics.py
-        06_feature_merge.ipynb        → src/features/merge.py
+        01_market_leading.ipynb           → apt_core/features/market.py
+        02_school_environment.ipynb       → backend/pipeline/collect/school.py (Crosswalk·보정)
+        02b_school_features.ipynb         → apt_core/features/school.py
+        02c_academy_features.ipynb        → apt_core/features/academy.py
+        03_policy.ipynb                   → apt_core/features/policy.py
+        04_housing_supply.ipynb           → apt_core/features/supply.py
+        05_demographics.ipynb             → apt_core/features/demographics.py
+        06_feature_merge.ipynb            → apt_core/features/merge.py
     model/
         regression/  10_v1_final · 11_v2
         clustering/  20_v1_final · 21_v2
         classification/ 30_v1_final · 31_v2
 
-src/
-    config.py                 # 경로 · 시점 규칙 상수 (13장) · 모델 버전
-
-    collect/                  # 외부 데이터 수집 (API · 파일)
-        trades.py             # 국토부 실거래가 (매일)
-        market.py             # R-ONE · 한국은행 (월)
-        school.py             # 교육통계 · 학교알리미 · Crosswalk (연)
-        store.py              # 상가정보 분기 스냅샷 · 품질 검사 (분기)
-        academy_registry.py   # 학원교습소정보 + 지오코딩 캐시 (월)
-
-    features/                 # 노트북과 동일한 Feature 함수 (학습·서빙 공용)
+packages/apt-core/apt_core/               # 학습·서빙 공용 패키지 (pip install -e)
+    config.py                             # 경로 · 시점 규칙 상수 (13장) · 모델 버전 · 주택유형
+    features/                             # 노트북과 동일한 Feature 함수
         base.py  market.py  school.py  academy.py
         policy.py  supply.py  demographics.py  merge.py
-        point_in_time.py      # 사용가능일 기준 as-of 결합 (13장)
-
+        point_in_time.py                  # 사용가능일 기준 as-of 결합 (13장)
     models/
-        clustering.py         # KMeans / GMM / 군집 피처 생성
-        regression.py         # 실거래가 예측
-        classification.py     # 저평가 등급 분류
+        clustering.py                     # KMeans / GMM / 군집 피처 생성
+        regression.py                     # 적정가 예측 + OOF Gap
+        classification.py                 # 지역 3개월 상승 확률
+    tests/                                # 노트북 parquet ↔ apt_core 결과 일치 테스트
 
-    pipelines/                # 스케줄러가 호출하는 진입점 (13장)
-        daily.py              # 실거래 수집 → 단지 적정가 배치 추론 → 성능 모니터링
-        monthly.py            # 시장 지표 · 학원 등록정보 갱신
-        quarterly.py          # 상가정보 갱신 · 모델 재학습 판단
-        yearly.py             # 교육통계 · 학교알리미 · 학구도 갱신
-        retrain.py            # 재학습 + V1/V2와 동일 기준 비교 후 승격
+backend/
+    core-service/                         # Django + DRF
+        config/                           # settings (base · local · prod), urls
+        accounts/                         # 커스텀 User, allauth(카카오·네이버), JWT 발급
+        watchlist/                        # 관심단지 · 비교 바구니 · 최근 본 단지
+        searches/                         # 저장 검색 (스크리너 조건)
+        homes/                            # 내 집 등록 · 월별 적정가 추적
+        notes/                            # 임장 노트 · 체크리스트 · 사진
+        notifications/                    # 알림 설정 · 알림함 · 발송 내역
+        conversations/                    # AI 상담 대화 이력 · 리포트 공유 링크
+        activity/                         # 행동 로그 (조회 · 관심 · 검색)
+        ops/                              # Admin: 정책 등록 · 품질 게이트 · 모델 승격 · 평가 결과
+        tasks.py                          # Celery 작업 (알림 발송 · RAG 재색인)
+    analysis-service/                     # FastAPI
+        app/routers/                      # complexes · screener · compare · predict · similar · market
+        app/business/
+            screener.py                   # 저평가 매물 스크리닝
+            recommender.py                # 유사 단지 / 개인화 추천
+            comparator.py                 # 단지 간 비교
+            explainer.py                  # SHAP / 가격요인 설명
+            calculator.py                 # 매수 자금 · LTV/DSR · 취득세 계산
+            report.py                     # 통합 분석 결과 생성
+        app/inference.py                  # 단지 + 면적·층 → 최신 Feature 조회 → 전체 모델 추론
+    ai-service/                           # FastAPI (12장)
+        app/tools.py                      # analysis-service API를 LLM 도구로 노출
+        app/agent.py                      # Tool Use 오케스트레이션
+        app/rag/                          # 정책·규제 문서 검색 (Qdrant)
+        app/prompts/                      # 버전 관리되는 프롬프트
+        app/guardrails.py                 # 숫자 일치 검증 / 표현 제한
+    pipeline/                             # Prefect flows (13장)
+        collect/
+            trades.py                     # 국토부 실거래가 (매일)
+            market.py                     # R-ONE · 한국은행 (월)
+            school.py                     # 교육통계 · 학교알리미 · Crosswalk (연)
+            store.py                      # 상가정보 분기 스냅샷 · 품질 검사 (분기)
+            academy_registry.py           # 학원교습소정보 + 지오코딩 캐시 (월)
+            building_register.py          # 건축물대장 총괄표제부·표제부 (단지 속성, 18장)
+            official_price.py             # 공동주택 공시가격 (연, 18장)
+            commute.py                    # 업무지구까지 대중교통 소요시간 (ODsay, 단지 신규 시, 18장)
+            housing_notices.py            # LH · SH 분양·임대 공고 (매일, 18장)
+            client.py                     # 공공 API 공통 클라이언트 (키 · 레이트리밋 · 재시도 · 캐시)
+        flows/
+            daily.py                      # 실거래 수집 → 배치 추론 → MAPE 모니터링 → 알림 이벤트
+            monthly.py                    # 시장 지표 · 학원 등록정보 갱신
+            quarterly.py                  # 상가정보 갱신 · 재학습 판단
+            yearly.py                     # 교육통계 · 학교알리미 · 학구도 갱신
+            retrain.py                    # 재학습 + 동일 기준 비교 → Admin 승인 대기
+        quality.py                        # 데이터 품질 게이트
 
-    business/
-        screener.py           # 저평가 매물 스크리닝
-        recommender.py        # 유사 단지 / 매물 추천
-        comparator.py         # 단지 간 비교
-        explainer.py          # SHAP / 가격요인 설명
-        report.py             # 통합 분석 결과 생성
-
-    ai/                       # AI 엔지니어링 레이어 (12장)
-        tools.py              # ML 결과를 LLM 도구로 노출
-        agent.py              # Tool Use 오케스트레이션
-        rag/                  # 정책·규제 문서 검색
-        prompts/              # 버전 관리되는 프롬프트
-        guardrails.py         # 숫자 일치 검증 / 표현 제한
-
-    inference.py              # 신규 매물 입력 → 전체 모델 추론 (요청 시)
+frontend/web/                             # React + Vite + Tailwind
+    src/api/                              # analysis·ai OpenAPI에서 생성한 TS 타입 + core API 클라이언트
 
 data/
-    external/                 # 외부 원본 (대용량 상가정보는 git 제외)
-    v2_5year_seoul/processed/ # Feature 테이블 (사용가능일 포함)
+    external/                             # 외부 원본 (대용량 상가정보는 git 제외)
+    v2_5year_seoul/processed/             # Feature 테이블 (사용가능일 포함)
 
-models/
-    regression/ v1 · v2       # 모델 · 전처리기 · feature_config · metrics
+models/                                   # 모델 레지스트리
+    regression/ v1 · v2                   # 모델 · 전처리기 · feature_config · metrics
     clustering/ v1 · v2
     classification/ v1 · v2
 
-evals/                        # LLM 평가 세트 · 평가 스크립트 · 결과 기록
+evaluation/                               # LLM 평가 세트 · 회귀 성능 기준선 · 평가 스크립트 · 결과 기록
 
-app/
-    backend/                  # FastAPI (서빙 DB 조회 + 요청 시 추론 + AI 레이어)
-    frontend/                 # React 등
+infrastructure/
+    compose.yaml                          # nginx · postgres(PostGIS) · redis · qdrant + 서비스 전체
+    nginx/                                # 경로 기반 라우팅 · 정적 파일
+    llmops/                               # Langfuse(LLM 추적) · Prefect server · Evidently(드리프트·MAPE 리포트)
+    gitops/                               # Helm + kind (마지막 단계)
 
-.github/workflows/            # 일·월·분기·연 배치 스케줄 (cron)
+.github/workflows/                        # core · analysis · ai · pipeline · web CI + 배치 cron + 이미지 빌드(GHCR)
+docs/
+.env.example
 ```
 
 ---
@@ -382,40 +463,57 @@ price_gap_pct
 price_gap_pct = (actual_price - predicted_price) / predicted_price
 ```
 
-이 값이 다음 분류 단계의 핵심 입력/라벨 생성 기준이 된다.
+이 값은 두 곳에 쓰인다.
+
+- **적정가 대비 등급** — 거래 단위 Gap을 오차 범위와 비교해 규칙으로 판정 (6장)
+- **분류 입력** — Train/Val 기간 **OOF** Gap을 구 × 월로 평균 내 31 분류 Feature로 전달 (6장)
 
 ---
 
-# 6. 3단계 — 분류(Classification)
+# 6. 3단계 — 적정가 대비 등급 · 지역 상승 확률 분류
 
-## 목표
+A안에서는 V1 초안의 "회귀 잔차로 5단계 등급 라벨을 만들어 분류 모델로 예측" 구조를 쓰지 않는다.
+등급은 **규칙**으로 판정하고, 분류 모델은 **다른 질문(지역 3개월 상승)**에 답한다.
 
-회귀모델의 예측가격을 **현재 데이터 기준 적정가격의 추정치**로 보고 실제 거래가가 적정가 대비 어느 정도 위치하는지를 사용자에게 이해하기 쉬운 등급으로 제공한다.
+> **변경 이유:** 회귀 잔차로 만든 라벨을 다시 분류 모델로 예측하면 회귀 결과를 한 번 더 근사할 뿐 새 정보가 없다.
+> 또 "적극매수 추천 · 매수주의" 같은 표현은 투자 권유에 가까워 12장 Guardrail 원칙과 충돌한다.
 
-현재 계획하는 5단계 등급은 다음과 같다.
+## 6-1. 적정가 대비 등급 (규칙 기반, 거래·매물 단위)
 
-```text
-적극매수 추천
-저평가
-적정가
-고평가
-매수주의
-```
+| 등급 | 판정 (예시, 경계는 11번에서 확정) |
+|---|---|
+| 저평가 | Gap이 오차 범위의 2배보다 더 낮음 |
+| 다소 저평가 | Gap이 오차 범위의 1~2배만큼 낮음 |
+| 적정 | Gap이 오차 범위 안 |
+| 다소 고평가 | Gap이 오차 범위의 1~2배만큼 높음 |
+| 고평가 | Gap이 오차 범위의 2배보다 더 높음 |
 
-초기 임계값은 회귀 잔차 비율을 기준으로 두되, 최종 버전에서는 데이터 분포와 서비스 목적을 보고 재검토한다.
+- **오차 범위**는 회귀 **OOF 오차 분포**에서 구한다. 군집 · 가격대 · Seen/Unseen 단지별로 오차가 다르므로 구간별로 따로 잡는다.
+  (V2 02 검증에서 처음 보는 단지 MAPE가 약 12.7%로 Test 9.2%보다 커서, 같은 Gap이라도 신규 단지는 "적정" 폭을 넓게 둔다.)
+- 모델이 학습한 거래로 경계를 잡으면 오차가 과소평가되므로 **OOF / 홀드아웃 예측만** 사용한다.
+- 사용자 표현은 "모델 기준 저평가"로 고정하고 매수 · 매도 권유 문구는 쓰지 않는다.
 
-## 주의사항
+## 6-2. 지역 3개월 상승 확률 (분류 모델, 구 × 월 단위)
 
-분류 라벨을 회귀 잔차로 만드는 경우, **회귀모델이 학습하지 않은 홀드아웃/OOF 예측값을 기준으로 라벨을 생성**해 회귀의 과적합이 분류 라벨에 그대로 전달되지 않도록 한다.
+| 항목 | 내용 |
+|---|---|
+| 타깃 | 해당 구의 향후 3개월 가격 +3% 이상 상승 여부 (V1과 동일 정의) |
+| 입력 | V1 Feature + 시장(01) · 정책(03) · 공급(04) · 인구(05) + **구별 평균 OOF Gap** (회귀 → 분류 연결) |
+| 데이터 | `v2_region_month.parquet`, 학습 행 약 450개 → Feature 선별 필수 |
+| 기준선 | V1 ROC-AUC 0.61, 후반부 regime degradation 완화 여부 확인 |
+| 검증 | V1과 같은 rolling / expanding 시간 백테스트 |
+
+- **OOF Gap만 사용:** 회귀가 학습한 기간의 in-sample Gap을 넣으면 회귀 과적합이 분류 입력으로 새어 들어간다.
+- **회귀 → 분류 연결은 Ablation으로 검증**해 OOF Gap Feature가 성능을 올릴 때만 채택한다.
+- 사용자에게 **확률**로 보여주므로 정확도보다 **ROC-AUC · PR-AUC · Brier score · Calibration curve**를 중심으로 평가하고,
+  필요하면 확률 보정(Platt / Isotonic)을 적용한다.
 
 ## 후보 모델
 
-- LogisticRegression
+- LogisticRegression (행이 적어 강한 기준선)
 - RandomForestClassifier
 - XGBoostClassifier
 - MLP — 선택적 비교
-
-평가 시 Accuracy보다 **Macro F1 / 클래스별 Recall / Confusion Matrix**를 중심으로 확인한다.
 
 ---
 
@@ -463,9 +561,10 @@ price_gap_pct = (actual_price - predicted_price) / predicted_price
 예상 적정가 12.4억
 현재/최근 거래가 11.6억
 적정가 대비 -6.5%
+적정가 대비 등급: 다소 저평가 (Gap + 오차 범위 규칙)
 
-[분류]
-저평가 등급
+[지역 전망 · 분류]
+○○구 3개월 상승 확률 Z%
 
 [설명]
 가격을 높인 요인 / 낮춘 요인
@@ -551,7 +650,8 @@ Top 5 유사 단지
 | 역세권거리 | | | |
 | 초등학교거리 | | | |
 | 생활인프라 유형 | | | |
-| 평가등급 | | | |
+| 적정가 대비 등급 | | | |
+| 지역 3개월 상승 확률 | | | |
 
 실수요자가 실제로 고민하는 **"A와 B 중 어디가 더 합리적인가?"**라는 질문에 직접 답하는 기능이다.
 
@@ -595,6 +695,40 @@ Top 5 유사 단지
 ```
 
 등을 요약해서 보여준다.
+
+---
+
+## 사용자 기능 (core-service · Django)
+
+분석 화면만으로는 한 번 보고 끝나는 서비스가 된다. 사용자가 **다시 돌아올 이유**를 만드는 기능이며,
+대부분 ML 결과(적정가 · 등급 · 군집)를 사용자 데이터와 연결해 만든다.
+
+### 1순위 — 서비스로 쓰이려면 필요한 것
+
+| 기능 | 내용 | ML / AI 연결 |
+|---|---|---|
+| 회원 · 소셜 로그인 | 카카오 · 네이버 OAuth(django-allauth), JWT | 아래 기능의 기반 |
+| 관심단지 + 알림 | 신규 실거래 · 모델 기준 저평가 구간 진입 · 최근 거래가 급변 시 알림 | 매일 배치 결과에서 이벤트 감지 |
+| 저장 검색 + 알림 | 스크리너 조건 저장, 조건에 맞는 신규 거래 발생 시 알림 | 스크리너 재사용 |
+| 내 집 등록 | 보유 단지의 월별 적정가 추적 · 자산 리포트 | 회귀 + AI 리포트 |
+| 매수 자금 계산기 | 예산 · 소득 → LTV/DSR 대출 한도 · 취득세 · 보유세(공시가격 기준) · 필요 현금 | 정책 RAG (규제 근거 출처 제공) |
+
+### 2순위 — 차별화
+
+| 기능 | 내용 | ML / AI 연결 |
+|---|---|---|
+| 개인화 추천 | 조회 · 관심 기록 기반 단지 추천 | 군집 + KNN + 행동 로그 |
+| AI 상담 이력 | 대화 저장 · 이어하기, 리포트 공유 링크 · PDF | ai-service |
+| 단지 비교 바구니 | 담아두고 MVP 4 비교 화면으로 | 비교 페이지 |
+| 임장 노트 | 단지별 메모 · 체크리스트 · 사진 | — |
+| 마이페이지 | 최근 본 단지 · 알림 설정 · 알림함 | — |
+
+### 3순위 — 나중에
+
+- 거주 후기 · 커뮤니티 (신고 · 검수 등 운영 부담이 커서 후순위)
+- 전세 안전 진단 (빌라 확장 Phase 9와 함께)
+
+알림 문구도 투자 권유가 아니라 **"모델 기준 저평가 구간 진입"**처럼 사실만 전달한다.
 
 ---
 
@@ -642,20 +776,6 @@ SHAP을 사용해 모델의 주요 설명 변수를 보여준다.
 
 ---
 
-## 확장 3 — 관심단지 / 신규 거래 알림 ★★★☆☆
-
-사용자가 단지를 관심 목록에 등록하고 데이터가 갱신됐을 때,
-
-- 새로운 실거래 발생
-- 모델 기준 저평가 구간 진입
-- 최근 거래가 급변
-
-등을 알려주는 기능으로 확장할 수 있다.
-
-초기 MVP에서는 실제 알림 기능까지 구현하지 않고 **관심단지 저장 + 최근 변화 표시**까지만 구현해도 충분하다.
-
----
-
 ## 확장 4 — LLM 분석 리포트 ★★★★☆
 
 LLM은 예측 성능을 높이는 용도가 아니라 **ML 결과를 사람이 이해할 수 있는 리포트로 바꾸는 역할**로 사용한다.
@@ -693,7 +813,8 @@ LLM은 예측 성능을 높이는 용도가 아니라 **ML 결과를 사람이 �
 │ 모델 적정가              │
 │ 실제/최근 거래가         │
 │ 적정가 대비 Gap          │
-│ 저평가 등급              │
+│ 적정가 대비 등급         │
+│ 지역 3개월 상승 확률     │
 │ 생활 인프라 Cluster Tag  │
 └───────────────────────────┘
  ↓
@@ -703,7 +824,9 @@ LLM은 예측 성능을 높이는 용도가 아니라 **ML 결과를 사람이 �
  ↓
 단지 비교
  ↓
-관심단지 저장
+관심단지 저장 (로그인)
+ ↓
+알림 수신 → 다시 방문 → 내 집 · 저장 검색 · AI 상담 이어하기
 ```
 
 ---
@@ -720,20 +843,30 @@ LLM은 예측 성능을 높이는 용도가 아니라 **ML 결과를 사람이 �
 4. **단지 비교**
 5. **군집 기반 필터**
 
+## 사용자 기능 1순위 (core-service, 8장)
+
+6. 회원 · 소셜 로그인
+7. 관심단지 + 알림
+8. 저장 검색 + 알림
+9. 내 집 등록
+10. 매수 자금 계산기
+
 ## 가능하면 구현
 
-6. 지도 기반 탐색
-7. SHAP 가격 설명
-8. 시장 세그먼트 Explorer
+11. 지도 기반 탐색
+12. SHAP 가격 설명
+13. 시장 세그먼트 Explorer
 
 ## 웹 MVP 이후 — AI 엔지니어링 (12장)
 
-9. LLM 단지 리포트 (Structured Output + 숫자 검증)
-10. 평가 세트 · 대화형 검색 · 정책 RAG
+14. LLM 단지 리포트 (Structured Output + 숫자 검증)
+15. 평가 세트 · 대화형 검색 · 정책 RAG
+16. AI 상담 이력 · 리포트 공유
 
 ## 시간 여유 시
 
-11. 관심단지 저장/알림
+17. 개인화 추천 (행동 로그가 충분히 쌓인 뒤)
+18. 임장 노트 · 비교 바구니
 
 ---
 
@@ -749,8 +882,10 @@ LLM은 예측 성능을 높이는 용도가 아니라 **ML 결과를 사람이 �
 | 소비자 세그먼트 D | 예산/평형 기반 추천 |
 | 가격대비인프라 E | 가치 후보 스크리닝 참고 |
 | Regression Prediction | 모델 적정가 |
-| Regression Gap | 저평가 정도 |
-| Classification | 사용자용 5단계 평가등급 |
+| Regression Gap | 적정가 대비 % |
+| Regression Gap + OOF 오차 범위 (규칙) | 적정가 대비 5단계 등급 (저평가 ~ 고평가), 스크리너 조건 |
+| 구 × 월 평균 OOF Gap | 지역 카드 "이 지역이 적정가보다 싸게 거래되는 중" |
+| Classification | 지역 3개월 상승 확률 (지역 카드 · 단지 상세 · 비교) |
 | SHAP | 가격 예측 근거 |
 | KNN/NearestNeighbors | 유사 단지 Top N |
 
@@ -774,7 +909,8 @@ LLM은 군집·회귀·분류 결과를 **도구(Tool)로 호출해 받은 값�
               ▼               ▼                ▼              ▼
         /predict         /similar          /school        /policy-search
      회귀: 적정가      군집+KNN:        학교 카드(V2)   RAG: 정책·규제
-     분류: 등급        유사 단지
+     규칙: 등급        유사 단지
+     분류: 지역 상승 확률
      SHAP: 가격요인
               └──────── 숫자·근거 ─────────┘
                               ▼
@@ -790,8 +926,8 @@ LLM은 군집·회귀·분류 결과를 **도구(Tool)로 호출해 받은 값�
 | Structured Output | 리포트를 `{요약, 가격요인[], 학교, 리스크}` JSON으로 받아 프론트에서 렌더링 | 스키마 설계·검증 |
 | Grounding 검증 | 답변 속 숫자가 도구 결과와 일치하는지 코드로 확인, 불일치 시 재생성 | 환각 방지 |
 | Evaluation | 질문-정답 세트 50~100개, 숫자 정확도·출처 정확도·LLM-as-judge | 프롬프트 변경을 수치로 비교 |
-| Serving | FastAPI + 스트리밍, 단지·월 단위 리포트 캐시 | 지연시간·비용 관리 |
-| Observability | 요청별 토큰·응답시간·도구 호출·실패율 로깅 | 운영 역량 |
+| Serving | ai-service(FastAPI) + 스트리밍, 단지·월 단위 리포트 캐시(Redis), 대화 이력은 core-service에 저장 | 지연시간·비용 관리 |
+| Observability | 요청별 토큰·응답시간·도구 호출·실패율 로깅 (Langfuse) | 운영 역량 |
 | Guardrails | 투자 권유 표현 차단, 도구 밖 숫자 생성 금지 | 서비스 책임성 |
 
 ## 단계별 기능
@@ -828,7 +964,7 @@ V2 Feature를 만들며 정한 **"거래 시점에 이미 공개된 정보만 �
 ```text
 학습: 거래일 기준으로 사용가능일 ≤ 거래일인 가장 최신 행을 as-of 결합
 서빙: 오늘 기준으로 사용가능일 ≤ 오늘인 가장 최신 행을 조회
-→ 같은 함수(src/features/point_in_time.py)로 처리해 학습·서빙 불일치(training-serving skew)를 막는다
+→ 같은 함수(apt_core/features/point_in_time.py)로 처리해 학습·서빙 불일치(training-serving skew)를 막는다
 ```
 
 | 데이터 | 시점 규칙 (V2에서 확정) |
@@ -838,10 +974,11 @@ V2 Feature를 만들며 정한 **"거래 시점에 이미 공개된 정보만 �
 | 학원 (상가정보) | 기준월 + 3개월부터 사용, 결손·좌표 오류 분기는 직전 정상 분기 |
 | 학원 등록정보 | 현재 명부만 존재 → 화면 표시 전용, 모델 미사용 |
 
-### 2) 노트북 = 실험, `src/` = 같은 함수
+### 2) 노트북 = 실험, `apt-core` = 같은 함수
 
-노트북에서 검증한 함수를 `src/`로 옮긴 뒤,
-**`src/` 결과가 노트북이 저장한 parquet과 일치하는지 테스트**로 확인한다. (리팩터링 회귀 방지)
+노트북에서 검증한 함수를 `packages/apt-core/`로 옮긴 뒤,
+**`apt-core` 결과가 노트북이 저장한 parquet과 일치하는지 테스트**로 확인한다. (리팩터링 회귀 방지)
+pipeline(학습·배치)과 analysis-service(요청 시 추론)가 같은 패키지를 설치해 쓴다.
 
 ### 3) 미리 계산 + 요청 시 계산
 
@@ -860,6 +997,10 @@ V2 Feature를 만들며 정한 **"거래 시점에 이미 공개된 정보만 �
 | 상가정보 (학원 수) | 분기 | 분기 1회 |
 | 교육통계 · 학교알리미 | 연간 (학교알리미 API는 최근 3년만 제공) | 연 1회 |
 | 학구도 (통학구역) | 반기 (3월·9월) | 반기 1회 |
+| 공동주택 공시가격 | 연간 (4월 말 결정공시) | 연 1회 |
+| 건축물대장 | 수시 (신축·변경 시) | 분기 1회 + 신규 단지 발생 시 |
+| LH · SH 분양·임대 공고 | 수시 | 매일 |
+| 업무지구 출퇴근 시간 (ODsay) | — (노선 변경 시) | 신규 단지 발생 시 + 연 1회 재계산 |
 
 매물 호가는 공개 API가 없고 크롤링은 약관 문제가 있어 사용하지 않는다.
 서비스는 **"실거래 기준 적정가"**로 포지셔닝한다.
@@ -868,7 +1009,8 @@ V2 Feature를 만들며 정한 **"거래 시점에 이미 공개된 정보만 �
 
 ```text
 [매일]   실거래 수집 → 신규 거래 Feature → 전 단지 적정가 배치 추론 → 서빙 DB
-         └ 새 실거래 = 정답 → 최근 30일 MAPE 자동 계산 (성능 모니터링)
+         ├ 새 실거래 = 정답 → 최근 30일 MAPE 자동 계산 (성능 모니터링, Evidently 리포트)
+         └ 신규 실거래 · 저평가 구간 진입 · 가격 급변 감지 → Redis 이벤트 → worker가 관심 사용자에게 알림
 [월]     시장 지표 · 학원 등록정보 갱신 → Feature 테이블 → 단지 카드 갱신
 [분기]   상가정보 갱신 + 품질 검사 → 재학습 여부 판단
 [연·반기] 교육통계 · 학교알리미 · 학구도 갱신 → 학교 Feature 갱신
@@ -888,10 +1030,11 @@ V2에서 발견한 원본 데이터 문제를 파이프라인 검사로 자동�
 ## 모델 운영
 
 - **재학습:** 분기 1회 또는 최근 30일 MAPE가 기준선(V2 Test MAPE) 대비 크게 악화될 때
-- **승격 기준:** V1·V2와 같은 Train/Val/Test 규칙으로 비교해 개선될 때만 교체, 이전 버전 보관
-- **서빙 DB:** 단지 프로필 · 단지 최신 Feature · 단지 일별 적정가 · 실거래 · 학군/학원/시장 카드 · AI 리포트 캐시
-- **스케줄러:** 포트폴리오 단계는 GitHub Actions cron, 배포 후 서버 cron 또는 Airflow
-- **비밀값:** API 키는 `.env` / 저장소 Secrets로만 관리
+- **승격 기준:** V1·V2와 같은 Train/Val/Test 규칙으로 비교해 개선될 때만 후보로 올리고, **Django Admin에서 승인**해야 서빙 버전을 교체한다. 이전 버전 보관
+- **서빙 DB (`serving` 스키마):** 단지 프로필 · 단지 최신 Feature · 단지 일별 적정가 · 실거래 · 학군/학원/시장 카드 · 품질 게이트 결과
+- **사용자 DB (`core` 스키마):** 회원 · 관심단지 · 저장 검색 · 내 집 · 알림 · 대화 이력 · 행동 로그 (Django 마이그레이션으로 관리)
+- **스케줄러:** Prefect (로컬은 Compose의 Prefect server). Compose 배포 전 포트폴리오 단계는 GitHub Actions cron으로 대체 가능
+- **비밀값:** API 키는 서비스별 `.env` / 저장소 Secrets로만 관리, `.env.example`만 커밋
 
 ---
 
@@ -932,11 +1075,13 @@ V2에서 발견한 원본 데이터 문제를 파이프라인 검사로 자동�
 
 ## Phase 4 — 분류
 
-- [ ] 회귀 OOF/Holdout 잔차로 등급 라벨 생성
-- [ ] 5단계 등급 분포 검토
-- [ ] Logistic / RF / XGB 비교
+> A안 확정(2026-10-07)으로 "잔차 등급 라벨 → 분류 모델" 계획은 폐기하고 아래로 대체한다. (6장)
+
+- [ ] 적정가 대비 등급: 회귀 OOF 오차 분포로 구간별(군집 · 가격대 · Seen/Unseen) 경계 확정 → 등급 분포 검토
+- [ ] 지역 3개월 상승 분류: Logistic / RF / XGB 비교 (V1 ROC-AUC 0.61 기준선)
+- [ ] 구별 평균 OOF Gap Feature Ablation
 - [ ] Class imbalance 대응
-- [ ] Macro F1 / Recall 평가
+- [ ] ROC-AUC · PR-AUC · Brier score · Calibration 평가
 
 ## Phase 4-1 — V2 Feature (진행 중)
 
@@ -947,10 +1092,11 @@ V2에서 발견한 원본 데이터 문제를 파이프라인 검사로 자동�
 |---|---|---|---|---|
 | 01 | `01_market_leading` | 매매/전세 수급, 가격지수 증감률·momentum, CSI, CCSI | `market_leading_v2.parquet` | ✅ |
 | 02 | `02_school_environment` / `02b_school_features` / `02c_academy_features` | 학교 Crosswalk·보정 / 단지×연도 학교 Feature / 학원 Feature | `school_environment_v2.parquet` | ✅ |
-| 03 | `03_policy` | 정책 유형·규제/완화 방향·강도·경과 개월·최근 3/6개월 정책 수 | `policy_v2.parquet` | ⏳ |
-| 04 | `04_housing_supply` | 인허가·착공·준공·미분양 (당시 공개된 공급계획만) | `housing_supply_v2.parquet` | ⏳ |
-| 05 | `05_demographics` | 세대수·인구·증감률·전입/전출·순이동 | `demographics_v2.parquet` | ⏳ |
-| 06 | `06_feature_merge` | V1 + Market + School + Policy + Supply + Demographics | 최종 V2 데이터셋 | ⏳ |
+| 03 | `03_policy` | 정책 유형·규제/완화 방향·강도·경과 개월·최근 3/6개월 정책 수 (발표일은 국토부 보도자료 · 법령 개정일로 확정) | `policy_v2.parquet` | ⏳ |
+| 04 | `04_housing_supply` | 인허가·착공·준공·미분양 (당시 공개된 공급계획만) + LH·SH 분양 공고 세대수 (공고일 기준) | `housing_supply_v2.parquet` | ⏳ |
+| 05 | `05_demographics` | 세대수·인구·증감률·전입/전출·순이동 (KOSIS Open API) | `demographics_v2.parquet` | ⏳ |
+| 05b | `05b_complex_attributes` (후보) | 건축물대장 단지 속성 · 공시가격 · 업무지구 출퇴근 시간 (18장) | `complex_attributes_v2.parquet` | ⏳ |
+| 06 | `06_feature_merge` | V1 + Market + School + Policy + Supply + Demographics (+ 05b 단지 속성) | 최종 V2 데이터셋 | ⏳ |
 
 **01 Market** — 가격지수 수준값(`매매/전세가격지수_lag1`)은 2026-06=100 리베이스로 미래 상승폭이 포함되어 제외, 증감률·momentum만 사용 (16개)
 
@@ -987,6 +1133,7 @@ V2에서 발견한 원본 데이터 문제를 파이프라인 검사로 자동�
 
 - [ ] 21 군집: 단지 단위, 가격 미사용 Feature로 유형·유사 단지
 - [ ] 11 회귀: 군집 라벨 Feature 추가 효과를 Ablation으로 검증 (채택 여부 결정)
+- [ ] 11 회귀: 05b 단지 속성(세대수 · 주차 · 용적률 · 공시가격 · 출퇴근 시간)이 **Unseen 단지 MAPE**를 낮추는지 Ablation (02 검증 결론의 후속)
 - [ ] 11 회귀: Train/Val 기간 OOF 예측 저장 → 구 × 월 평균 Gap 생성
 - [ ] 회귀 평가는 R²보다 MAPE·중앙 오차율 중심, 단순 규칙(같은 단지 최근 평당가 × 면적, MAPE 13.0%)과 함께 보고
 - [ ] 31 분류: V1 Feature + 시장·정책·공급·인구 + 구별 OOF Gap, 학습 행이 작아 Feature 선별 필수
@@ -994,49 +1141,79 @@ V2에서 발견한 원본 데이터 문제를 파이프라인 검사로 자동�
 
 ## Phase 5 — 코드 모듈화 + 데이터 갱신 파이프라인 (V2 모델링 후, 13장)
 
+**5-0. 저장소 골격** — 3장 구조로 폴더 생성 (`notebook/` · `data/` · `models/`는 이동하지 않음)
+
+- [ ] `packages/apt-core/` 패키지 설정 (`pyproject.toml`, `pip install -e`)
+- [ ] `infrastructure/compose.yaml` (우선 postgres(PostGIS) + pipeline)
+- [ ] `.env.example` · `.gitignore` 정리
+
 **5-1. 모듈화** — 노트북 로직을 그대로 옮기고 결과 일치를 테스트로 확인
 
-- [ ] `src/config.py` (경로 · 시점 규칙 상수 · 모델 버전)
-- [ ] `src/collect/` (실거래 · 시장 · 학교 · 상가정보 · 학원 등록정보)
-- [ ] `src/features/` (V2 노트북 01~06과 1:1) + `point_in_time.py`
-- [ ] `src/models/` (군집 · 회귀 · 분류) + `inference.py`
-- [ ] `src/business/`
-- [ ] 노트북 산출물 ↔ `src/` 결과 일치 테스트
+- [ ] `apt_core/config.py` (경로 · 시점 규칙 상수 · 모델 버전 · 주택유형)
+- [ ] `apt_core/features/` (V2 노트북 01~06과 1:1) + `point_in_time.py`
+- [ ] `apt_core/models/` (군집 · 회귀 · 분류)
+- [ ] `backend/pipeline/collect/` (실거래 · 시장 · 학교 · 상가정보 · 학원 등록정보)
+- [ ] 노트북 산출물 ↔ `apt_core` 결과 일치 테스트
 
-**5-2. 데이터 갱신 파이프라인**
+**5-2. 데이터 갱신 파이프라인 (`backend/pipeline`, Prefect)**
 
 - [ ] Feature 테이블에 사용가능일 컬럼 추가 (학습·서빙 공용 as-of 결합)
-- [ ] `pipelines/daily.py`: 실거래 수집 → 단지 적정가 배치 추론 → 최근 30일 MAPE 모니터링
-- [ ] `pipelines/monthly.py` · `quarterly.py` · `yearly.py`
-- [ ] 데이터 품질 게이트 (결손 · 좌표 오류 · 기준값 변경 · 이상값 → 직전 정상 데이터 유지)
-- [ ] `pipelines/retrain.py`: 재학습 + 동일 기준 비교 후 승격, 모델 버전 관리
-- [ ] GitHub Actions cron 스케줄 + Secrets
+- [ ] `serving` 스키마 설계 (단지 프로필 · 최신 Feature · 일별 적정가 · 실거래 · 학군/학원/시장 카드 · 품질 게이트 결과)
+- [ ] `flows/daily.py`: 실거래 수집 → 단지 적정가 배치 추론 → 최근 30일 MAPE 모니터링
+- [ ] `flows/monthly.py` · `quarterly.py` · `yearly.py`
+- [ ] `quality.py` 데이터 품질 게이트 (결손 · 좌표 오류 · 기준값 변경 · 이상값 → 직전 정상 데이터 유지)
+- [ ] `flows/retrain.py`: 재학습 + 동일 기준 비교 → 승격 후보 등록, 모델 버전 관리
+- [ ] pipeline · apt-core CI (GitHub Actions) + Secrets
 
-## Phase 6 — 웹 MVP
+## Phase 6 — 웹 MVP (analysis-service + core-service + frontend)
 
-- [ ] 서빙 DB (단지 프로필 · 최신 Feature · 일별 적정가 · 실거래 · 학군/학원/시장 카드)
-- [ ] FastAPI inference API (DB 조회 + 면적·층 요청 시 추론)
-- [ ] 단지 검색
+**6-1. 분석 기능 (analysis-service · FastAPI)**
+
+- [ ] `app/inference.py` (DB 조회 + 면적·층 요청 시 추론)
+- [ ] 단지 검색 (`pg_trgm`)
 - [ ] 통합 분석 결과 페이지
 - [ ] 저평가 스크리너
 - [ ] 유사 단지 추천
 - [ ] 단지 비교
 - [ ] 군집 기반 필터
+- [ ] 매수 자금 계산기 (LTV/DSR · 취득세)
 
-## Phase 7 — AI 엔지니어링 (12장)
+**6-2. 사용자 기능 (core-service · Django, 8장)**
 
-- [ ] ML 결과 Tool API (`/predict`, `/similar`, `/school`)
+- [ ] 커스텀 User · 카카오/네이버 로그인(django-allauth) · JWT 발급, FastAPI 쪽 JWT 검증
+- [ ] 개인정보처리방침 · 이용약관 · 위치정보 동의 (회원 기능 공개 전 필수, 18장)
+- [ ] 관심단지 · 저장 검색 · 내 집 등록 · 최근 본 단지
+- [ ] 행동 로그 (조회 · 관심 · 검색) 수집 시작
+- [ ] 알림: pipeline 이벤트 → Redis → Celery worker → 이메일/웹푸시 (카카오 알림톡은 후순위)
+- [ ] Django Admin 운영: 품질 게이트 결과 · 모델 승격 승인 · 알림 발송 내역 · 사용자 관리
+
+**6-3. 통합 · 배포**
+
+- [ ] `frontend/web` (React + Vite + Tailwind, OpenAPI 생성 타입)
+- [ ] `infrastructure/nginx` 경로 라우팅 + compose 전체 서비스 구동
+- [ ] 서비스별 CI (core · analysis · web) + GHCR 이미지 빌드
+- [ ] Compose 그대로 단일 서버(EC2/Lightsail) 배포 → 실제 B2C 접속 가능 상태
+
+## Phase 7 — AI 엔지니어링 (ai-service, 12장)
+
+- [ ] ML 결과 Tool API (analysis-service의 `/predict`, `/similar`, `/school`을 도구로 노출)
 - [ ] AI 단지 리포트 v1 (Structured Output + 숫자 Grounding 검증)
-- [ ] 평가 세트 구축 및 평가 스크립트 (`evals/`)
+- [ ] 평가 세트 구축 및 평가 스크립트 (`evaluation/`)
 - [ ] 대화형 검색 (자연어 → 필터 → 추천)
-- [ ] 정책 RAG
-- [ ] 로깅·비용 모니터링·캐시
+- [ ] 정책 RAG (Qdrant) + Django Admin 정책 등록 → Celery 재색인
+  - 문서 소스: 법령 원문(주택법 · 지방세법 · 은행업감독규정 등, 국가법령정보 API) + 국토부 보도자료(HWP → 텍스트 변환)
+- [ ] AI 상담 이력 저장 (core-service) · 리포트 공유 링크
+- [ ] `infrastructure/llmops/`: Langfuse(토큰·응답시간·도구 호출) · Evidently(드리프트·MAPE) · Redis 리포트 캐시
 
 ## Phase 8 — 확장
 
 - [ ] 지도
 - [ ] SHAP 설명 화면
-- [ ] 관심단지
+- [ ] 개인화 추천 (행동 로그 기반)
+- [ ] 경매 물건 적정가 비교 · 청약 공고 알림 · 보유세 계산 (18장)
+- [ ] 분석 도구를 MCP 서버 / Agent Skill로 공개 (18장)
+- [ ] 임장 노트 · 비교 바구니 · 카카오 알림톡
+- [ ] `infrastructure/gitops/`: Helm + kind 배포 검증
 
 ## Phase 9 — 주택 유형 확장 (아파트 서비스 완성 후)
 
@@ -1052,7 +1229,7 @@ V2에서 발견한 원본 데이터 문제를 파이프라인 검사로 자동�
 지금부터 지킬 설계 원칙:
 
 - Feature는 `단지일련번호`가 아니라 **좌표 · 법정동 · 구 × 월** 기준으로 만든다. (학교·학원 Feature는 이미 좌표 기준이라 재사용 가능)
-- `src/`와 서빙 DB에 **`주택유형` 키**를 두고, 공통 모듈에 아파트 전용 이름을 쓰지 않는다.
+- `apt-core`와 서빙 DB에 **`주택유형` 키**를 두고, 공통 모듈에 아파트 전용 이름을 쓰지 않는다.
 - 모델 경로는 유형별로 분리한다. (예: `models/regression/apt/v2`, `models/regression/officetel/v1`)
 
 ---
@@ -1089,26 +1266,85 @@ V2에서 발견한 원본 데이터 문제를 파이프라인 검사로 자동�
 
 # 17. 형상관리 방침
 
-- 브랜치: 개인 프로젝트는 `main` 중심
-- 커밋: 의미 있는 실험/기능 단위
+- 저장소: 모노레포 (서비스 · 패키지 · 인프라를 한 저장소에서 관리, 3장)
+- 브랜치: 개인 프로젝트는 `main` 중심. Phase 6부터는 서비스 단위 기능 브랜치 → PR로 CI 통과 후 병합
+- 커밋: 의미 있는 실험/기능 단위, 서비스 범위를 앞에 붙인다
   - `add infrastructure clustering features`
   - `compare regression with cluster features`
-  - `add undervalued screener api`
+  - `analysis: add undervalued screener api`
+  - `core: add watchlist and alert settings`
+- CI: GitHub Actions에서 변경된 경로(`backend/core-service/**` 등)의 서비스만 테스트·빌드
 - 데이터·모델: 재현에 필요한 `processed` Feature 테이블과 모델 산출물은 커밋한다.
   대용량 외부 원본(상가정보 약 6.9GB)은 `.gitignore`로 제외하고, 노트북이 추출한 parquet만 커밋한다.
 - `.gitignore`
-  - `.env`
+  - `.env` (서비스별 `.env` 포함, `.env.example`만 커밋)
   - `data/external/상가정보/`
   - `__pycache__/`
   - `.ipynb_checkpoints/`
+  - `node_modules/` · `frontend/web/dist/`
+  - `backend/core-service/media/` (임장 노트 사진 등 업로드 파일)
 - 이 문서에서 전체 진행상태 관리
+
+---
+
+# 18. 외부 데이터 · 도구 확장 (k-skill 참고)
+
+[k-skill](https://github.com/NomaDamas/k-skill)은 한국 공공데이터 · 생활 서비스 125개 이상을 AI 에이전트 스킬로 묶은 저장소(MIT)다.
+여기서 **이 프로젝트에 쓸 수 있는 데이터 소스와 아이디어만** 골랐다.
+
+- 스킬을 서비스에 그대로 넣지 않는다. **어떤 공식 API를 어떻게 호출하는지 참고**하고, 수집은 `pipeline/collect/`에서 자체 키로 공식 API를 직접 호출한다.
+- k-skill-proxy(AGPL-3.0, 제3자 서버) 경유 호출은 개발 중 탐색에만 쓰고 서비스 파이프라인에는 쓰지 않는다.
+- 새 데이터도 **13장 시점 규칙(사용가능일)**과 품질 게이트를 똑같이 적용한다.
+
+## 18-1. 모델 Feature 후보
+
+| 데이터 | 참고 스킬 | 쓰는 곳 | 시점 규칙 · 메모 |
+|---|---|---|---|
+| 건축물대장 (총괄표제부 · 표제부) | `building-register-search` | 11 회귀: 세대수 · 동수 · 세대당 주차대수 · 용적률 · 건폐율 · 최고층 · 사용승인일 / 21 군집: 재건축 유형 보강 | **02 검증 결론("신규 단지 일반화는 단지 자체 속성이 유력")에 직접 대응.** 건물 속성이라 시점 변화가 작다 |
+| 공동주택 공시가격 | `housing-official-price` | 11 회귀: 직전 공시가격 · 단지 내 상대 공시가 / 서비스: 보유세 계산 | 매년 4월 말 결정공시 → 결정공시 이후 거래는 당해, 이전은 전년도 (수집 시 공시일 확인) |
+| 업무지구 출퇴근 시간 | `korean-transit-route` (ODsay) | 11 회귀: 강남 · 여의도 · 광화문까지 대중교통 소요시간 / 스크리너 조건 | 단지당 1회 사전 계산 후 캐시 (무료 호출 한도 확인). 역 거리보다 직접적인 입지 지표 |
+| 생활 인프라 POI | `kakao-map` (Kakao Local 카테고리 검색) | 대형마트 · 병원 · 공원 반경 내 수 / 단지 카드 | 현재 스냅샷만 가능 → 과거 거래에 쓰면 누수 위험, **표시 전용 또는 시점 한계 명시** |
+| 인구 · 세대 · 전입전출 | `kosis-stats` (KOSIS Open API) | 05 demographics 수집 | 통계 공표일 기준 lag |
+| 금리 · CSI · 경제 지표 | `bok-ecos-stats` (한국은행 ECOS API) | 01 market의 수동 CSV/xlsx → API 수집으로 전환 (monthly) | 기존 lag1 규칙 유지 |
+| LH · SH 분양 · 임대 공고 | `lh-notice-search` · `sh-notice-search` | 04 supply: 구 × 월 공고 세대수 / 사용자 알림 | 공고일 = 공개 시점이라 "당시 공개된 공급계획만" 원칙과 맞다 |
+| 개별공시지가 | `gongsijiga-search` | Phase 9 빌라 · 단독 (단지 개념이 없어 토지 가치가 핵심) | |
+
+## 18-2. 사용자 기능 후보 (8장 보강)
+
+| 기능 | 데이터 | 내용 | 시기 |
+|---|---|---|---|
+| 보유세 · 취득세 계산 | 공시가격 + 지방세법 세율 | 내 집 · 매수 자금 계산기에 재산세 · 종부세 추정 추가 | Phase 6 |
+| 출퇴근 시간 필터 | ODsay | "회사까지 대중교통 40분 이내" 스크리너 조건, 대화형 검색과 연결 | Phase 6 |
+| 청약 · 공공임대 공고 알림 | LH · SH 공고 | 관심 지역 신규 공고 알림 (기존 worker 재사용) | Phase 8 |
+| 경매 물건 적정가 비교 | `court-auction-notice-search` (대법원 경매정보) | 서울 아파트 경매 물건의 감정가 · 최저입찰가 vs 모델 적정가 → 경매 스크리너 | Phase 8 |
+| 단지 환경 카드 | `fine-dust-location` 등 | 대기질 등 표시 전용 (모델 미사용) | Phase 8 |
+
+## 18-3. AI 레이어 (12장 보강)
+
+- **정책 RAG 문서 소스:** 법령 원문(`korean-law-search`, 국가법령정보 API)과 국토부 보도자료.
+  보도자료가 HWP인 경우가 많아 `hwp` 스킬이 쓰는 방식(kordoc)으로 텍스트를 변환한다. 같은 자료로 03 policy의 정책 발표일 타임라인도 확정한다.
+- **대화형 검색 도구 추가:** 출퇴근 시간 · 공시가격 · 청약 공고를 ai-service 도구로 노출한다.
+- **우리 서비스를 MCP 서버 / Agent Skill로 공개:** ai-service 도구(`/predict` · `/similar` · `/school`)를 MCP 서버로도 노출하면 Claude Code 등 외부 에이전트가 바로 쓸 수 있다.
+  k-skill 형식의 `seoul-apt-fair-value` 스킬로 기여하면 오픈소스 기여 이력이 남는다. (Phase 8)
+
+## 18-4. 운영 · 법무
+
+- **개인정보처리방침 · 이용약관:** 회원 기능 공개 전 필수. `korean-privacy-terms`로 초안을 만들고 수집 항목(소셜 로그인 · 행동 로그 · 위치)에 맞춰 직접 검토한다. (Phase 6-2)
+- **공공 API 공통 클라이언트:** k-skill-proxy처럼 호출을 한 곳(`pipeline/collect/client.py`)에 모아 키 관리 · 레이트리밋 · 재시도 · 캐시를 처리한다.
+- **공휴일 캘린더:** 배치 일정 · 실거래 신고기한(계약 후 30일) 계산에 사용한다.
+
+## 18-5. 쓰지 않는 것
+
+- `daangn-realty-search` 등 매물 웹 크롤링: 13장 원칙(약관 문제로 호가 미사용)을 유지한다.
+- `iros-registry-automation` (등기부): 계정 · 열람 수수료가 필요. 빌라 전세 안전 진단(Phase 9) 때 다시 검토한다.
 
 ---
 
 ## 최종 프로젝트 한 줄 설명
 
 > **서울 아파트 실거래·입지 데이터를 군집화해 시장 세그먼트를 발견하고, 해당 세그먼트 정보를 활용해 적정가격을 예측한 뒤 저평가 가능성을 등급화하여 유사 단지 비교와 매물 스크리닝까지 제공하고, LLM이 그 결과를 근거 기반으로 설명·상담하는 B2C 부동산 분석 웹 서비스.**
+> 관심단지 · 저장 검색 · 내 집 추적 알림으로 사용자가 다시 찾게 만들고, Django(사용자·운영)와 FastAPI(분석·AI)로 역할을 나눈 서비스 구조로 운영한다.
 
 ---
 
-*최종 수정일: 2026-10-05*
+*최종 수정일: 2026-10-07*
