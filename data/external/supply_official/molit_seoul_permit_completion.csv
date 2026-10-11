@@ -1,0 +1,383 @@
+﻿kind,year,month,total,apartment,source_file,basis
+인허가,2019,,62622,37767,molit_permit_201912.xls,dec_file_ytd
+인허가,2019,,62622,37767,molit_permit_ts_type_1995_2025.xlsx,timeseries_type
+인허가,2019,1,8179,5524,molit_permit_zip_2019.zip/19년 01월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2019,1,8179,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2019,2,5226,2984,molit_permit_zip_2019.zip/19년 02월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2019,2,5226,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2019,3,14311,10879,molit_permit_zip_2019.zip/19년 03월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2019,3,14311,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2019,4,3055,879,molit_permit_zip_2019.zip/19년 04월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2019,4,3055,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2019,5,3204,1306,molit_permit_zip_2019.zip/19년 05월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2019,5,3204,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2019,6,2378,792,molit_permit_zip_2019.zip/19년 06월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2019,6,2378,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2019,7,3188,1585,molit_permit_zip_2019.zip/19년 07월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2019,7,3188,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2019,8,4586,3049,molit_permit_zip_2019.zip/19년 08월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2019,8,4586,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2019,9,2803,1232,molit_permit_zip_2019.zip/19년 09월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2019,9,2803,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2019,10,2937,1100,molit_permit_zip_2019.zip/19년 10월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2019,10,2937,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2019,11,4967,2534,molit_permit_zip_2019.zip/19년 11월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2019,11,4967,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2019,12,7788,5903,molit_permit_zip_2019.zip/19년 12월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2019,12,7788,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2020,,58181,30404,molit_permit_202012.xls,dec_file_ytd
+인허가,2020,,59187,32386,molit_permit_ts_type_1995_2025.xlsx,timeseries_type
+인허가,2020,1,3417,1626,molit_permit_zip_2020.zip/20년_01월_인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2020,1,3326,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2020,2,5651,3293,molit_permit_zip_2020.zip/20년_02월_인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2020,2,3196,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2020,3,4617,2384,molit_permit_zip_2020.zip/20년_03월_인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2020,3,4500,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2020,4,4340,2141,molit_permit_zip_2020.zip/20년_04월_인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2020,4,4324,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2020,5,4124,1778,molit_permit_zip_2020.zip/20년_05월_인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2020,5,3922,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2020,6,3659,770,molit_permit_zip_2020.zip/20년_06월_인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2020,6,3476,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2020,7,4425,2013,molit_permit_zip_2020.zip/20년_07월_인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2020,7,4295,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2020,8,3086,967,molit_permit_zip_2020.zip/20년_08월_인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2020,8,5363,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2020,9,5232,2084,molit_permit_zip_2020.zip/20년_09월_인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2020,9,5031,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2020,10,7074,5046,molit_permit_zip_2020.zip/20년_10월_인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2020,10,7244,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2020,11,4832,2765,molit_permit_zip_2020.zip/20년_11월_인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2020,11,4606,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2020,12,7724,5537,molit_permit_zip_2020.zip/20년_12월_인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2020,12,9904,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2021,,81637,52819,molit_permit_202112.xls,dec_file_ytd
+인허가,2021,,81637,52819,molit_permit_ts_type_1995_2025.xlsx,timeseries_type
+인허가,2021,1,3072,1099,molit_permit_zip_2021.zip/21년 01월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2021,1,3072,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2021,2,7218,5039,molit_permit_zip_2021.zip/21년 02월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2021,2,7218,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2021,3,3959,2027,molit_permit_zip_2021.zip/21년 03월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2021,3,3959,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2021,4,9299,6625,molit_permit_zip_2021.zip/21년 04월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2021,4,9299,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2021,5,7409,4803,molit_permit_zip_2021.zip/21년 05월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2021,5,7409,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2021,6,6980,3655,molit_permit_zip_2021.zip/21년 06월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2021,6,6980,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2021,7,6229,3771,molit_permit_zip_2021.zip/21년 07월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2021,7,6229,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2021,8,5401,2837,molit_permit_zip_2021.zip/21년 08월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2021,8,5401,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2021,9,11889,9987,molit_permit_zip_2021.zip/21년 09월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2021,9,11889,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2021,10,7473,5815,molit_permit_zip_2021.zip/21년 10월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2021,10,7473,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2021,11,7220,5213,molit_permit_zip_2021.zip/21년 11월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2021,11,7220,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2021,12,5488,1948,molit_permit_zip_2021.zip/21년 12월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2021,12,5488,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2022,,42231,25133,molit_permit_202212.xls,dec_file_ytd
+인허가,2022,,42231,25133,molit_permit_ts_type_1995_2025.xlsx,timeseries_type
+인허가,2022,1,3581,2113,molit_permit_zip_2022.zip/22년 01월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2022,1,3581,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2022,2,5589,3923,molit_permit_zip_2022.zip/22년 02월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2022,2,5589,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2022,3,2809,1036,molit_permit_zip_2022.zip/22년 03월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2022,3,2809,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2022,4,4067,2509,molit_permit_zip_2022.zip/22년 04월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2022,4,4067,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2022,5,2456,940,molit_permit_zip_2022.zip/22년 05월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2022,5,2456,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2022,6,5652,3309,molit_permit_zip_2022.zip/22년 06월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2022,6,5652,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2022,7,3106,1929,molit_permit_zip_2022.zip/22년 07월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2022,7,3106,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2022,8,3708,2611,molit_permit_zip_2022.zip/22년 08월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2022,8,3708,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2022,9,2652,1407,molit_permit_zip_2022.zip/22년 09월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2022,9,2652,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2022,10,1918,971,molit_permit_zip_2022.zip/22년 10월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2022,10,1918,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2022,11,2508,1306,molit_permit_zip_2022.zip/22년 11월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2022,11,2508,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2022,12,4185,3079,molit_permit_zip_2022.zip/22년 12월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2022,12,4185,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2023,,39163,34965,molit_permit_202312.xls,dec_file_ytd
+인허가,2023,,39163,34965,molit_permit_ts_type_1995_2025.xlsx,timeseries_type
+인허가,2023,1,1848,1432,molit_permit_zip_2023.zip/23년 01월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2023,1,1848,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2023,2,6646,6246,molit_permit_zip_2023.zip/23년 02월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2023,2,6646,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2023,3,4292,3827,molit_permit_zip_2023.zip/23년 03월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2023,3,4292,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2023,4,2440,2140,molit_permit_zip_2023.zip/23년 04월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2023,4,2440,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2023,5,974,566,molit_permit_zip_2023.zip/23년 05월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2023,5,974,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2023,6,1295,980,molit_permit_zip_2023.zip/23년 06월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2023,6,1295,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2023,7,2595,2149,molit_permit_zip_2023.zip/23년 07월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2023,7,2595,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2023,8,3421,3116,molit_permit_zip_2023.zip/23년 08월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2023,8,3421,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2023,9,373,103,molit_permit_zip_2023.zip/23년 09월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2023,9,373,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2023,10,3847,3664,molit_permit_zip_2023.zip/23년 10월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2023,10,3847,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2023,11,6869,6483,molit_permit_zip_2023.zip/23년 11월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2023,11,6869,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2023,12,4563,4259,molit_permit_zip_2023.zip/23년 12월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2023,12,4563,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2024,,51452,47632,molit_permit_202412.xls,dec_file_ytd
+인허가,2024,,51452,47632,molit_permit_ts_type_1995_2025.xlsx,timeseries_type
+인허가,2024,1,2475,2184,molit_permit_zip_2024.zip/24년 01월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2024,1,2475,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2024,2,2503,2339,molit_permit_zip_2024.zip/24년 02월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2024,2,2503,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2024,3,1567,1348,molit_permit_zip_2024.zip/24년 03월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2024,3,1567,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2024,4,639,364,molit_permit_zip_2024.zip/24년 04월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2024,4,639,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2024,5,3339,3026,molit_permit_zip_2024.zip/24년 05월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2024,5,3339,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2024,6,3015,2718,molit_permit_zip_2024.zip/24년 06월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2024,6,3015,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2024,7,2229,2013,molit_permit_zip_2024.zip/24년 07월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2024,7,2229,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2024,8,5903,5691,molit_permit_zip_2024.zip/24년 08월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2024,8,5903,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2024,9,1830,1362,molit_permit_zip_2024.zip/24년 09월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2024,9,1830,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2024,10,2952,2518,molit_permit_zip_2024.zip/24년 10월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2024,10,2952,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2024,11,6559,6226,molit_permit_zip_2024.zip/24년 11월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2024,11,6559,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2024,12,18441,17843,molit_permit_zip_2024.zip/24년 12월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2024,12,18441,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2025,,41938,35512,molit_permit_202512.xls,dec_file_ytd
+인허가,2025,,41566,35124,molit_permit_ts_type_1995_2025.xlsx,timeseries_type
+인허가,2025,1,2878,2501,molit_permit_zip_2025.zip/25년 01월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2025,1,2783,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2025,2,4821,4207,molit_permit_zip_2025.zip/25년 02월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2025,2,4844,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2025,3,7231,6814,molit_permit_zip_2025.zip/25년 03월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2025,3,7339,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2025,4,1806,1408,molit_permit_zip_2025.zip/25년 04월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2025,4,1821,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2025,5,2581,2295,molit_permit_zip_2025.zip/25년 05월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2025,5,2542,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2025,6,3444,2998,molit_permit_zip_2025.zip/25년 06월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2025,6,3569,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2025,7,4075,3518,molit_permit_zip_2025.zip/25년 07월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2025,7,4089,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2025,8,1605,1015,molit_permit_zip_2025.zip/25년 08월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2025,8,1627,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2025,9,4842,4188,molit_permit_zip_2025.zip/25년 09월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2025,9,3982,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2025,10,1975,1222,molit_permit_zip_2025.zip/25년 10월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2025,10,2877,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2025,11,3518,3012,molit_permit_zip_2025.zip/25년 11월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2025,11,3517,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2025,12,3162,2334,molit_permit_zip_2025.zip/25년 12월 인허가실적(홈페이지게시용).xls,monthly_file
+인허가,2025,12,2576,,molit_permit_ts_month_region_1990_2025.xlsx,timeseries_month_region
+인허가,2026,1,1226,675,molit_permit_202601.xls,monthly_file
+인허가,2026,2,2591,2183,molit_permit_202602.xls,monthly_file
+인허가,2026,3,1815,1005,molit_permit_202603.xls,monthly_file
+인허가,2026,4,7128,6238,molit_permit_202604.xls,monthly_file
+인허가,2026,5,6292,5297,molit_permit_202605.xls,monthly_file
+인허가,2026,6,1603,979,molit_permit_202606.xls,monthly_file
+인허가,2026,7,7979,7103,molit_permit_202607.xls,monthly_file
+인허가,2026,8,39940,34017,molit_permit_202608.xls,latest_file_ytd
+인허가,2026,8,11306,10537,molit_permit_202608.xls,monthly_file
+준공,2019,,75373,45630,molit_completion_201912.xls,dec_file_ytd
+준공,2019,,75548,45860,molit_completion_ts_type_2005_2025.xlsx,timeseries_type
+준공,2019,1,4926,2261,molit_completion_zip_2019.zip/19년_01월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2019,1,3893,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2019,2,12947,10658,molit_completion_zip_2019.zip/19년_02월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2019,2,12912,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2019,3,2898,621,molit_completion_zip_2019.zip/19년_03월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2019,3,2876,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2019,4,4160,980,molit_completion_zip_2019.zip/19년_04월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2019,4,4588,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2019,5,4259,1555,molit_completion_zip_2019.zip/19년_05월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2019,5,4229,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2019,6,6952,4512,molit_completion_zip_2019.zip/19년_06월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2019,6,7144,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2019,7,5146,2482,molit_completion_zip_2019.zip/19년_07월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2019,7,5156,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2019,8,4477,2255,molit_completion_zip_2019.zip/19년_08월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2019,8,4564,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2019,9,10999,9091,molit_completion_zip_2019.zip/19년_09월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2019,9,11269,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2019,10,3701,1309,molit_completion_zip_2019.zip/19년_10월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2019,10,3675,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2019,11,5929,3528,molit_completion_zip_2019.zip/19년_11월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2019,11,6257,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2019,12,8979,6378,molit_completion_zip_2019.zip/19년_12월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2019,12,8985,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2020,,81406,56784,molit_completion_202012.xls,dec_file_ytd
+준공,2020,,78918,54355,molit_completion_ts_type_2005_2025.xlsx,timeseries_type
+준공,2020,1,5843,3620,molit_completion_zip_2020.zip/20년_01월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2020,1,5856,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2020,2,10637,8581,molit_completion_zip_2020.zip/20년_02월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2020,2,8611,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2020,3,6778,4953,molit_completion_zip_2020.zip/20년_03월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2020,3,6754,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2020,4,7128,5000,molit_completion_zip_2020.zip/20년_04월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2020,4,6907,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2020,5,5634,3796,molit_completion_zip_2020.zip/20년_05월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2020,5,5112,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2020,6,6292,4318,molit_completion_zip_2020.zip/20년_06월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2020,6,6278,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2020,7,6980,4543,molit_completion_zip_2020.zip/20년_07월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2020,7,6967,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2020,8,6216,4629,molit_completion_zip_2020.zip/20년_08월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2020,8,7503,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2020,9,10000,7788,molit_completion_zip_2020.zip/20년_09월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2020,9,8077,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2020,10,2328,613,molit_completion_zip_2020.zip/20년_10월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2020,10,3158,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2020,11,4868,2703,molit_completion_zip_2020.zip/20년_11월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2020,11,4848,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2020,12,8702,6240,molit_completion_zip_2020.zip/20년_12월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2020,12,8847,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2021,,71429,46651,molit_completion_202112.xls,dec_file_ytd
+준공,2021,,68367,43729,molit_completion_ts_type_2005_2025.xlsx,timeseries_type
+준공,2021,1,5276,2846,molit_completion_zip_2021.zip/21년_01월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2021,1,5319,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2021,2,10656,8884,molit_completion_zip_2021.zip/21년_02월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2021,2,10640,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2021,3,5724,3651,molit_completion_zip_2021.zip/21년_03월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2021,3,5497,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2021,4,3423,1263,molit_completion_zip_2021.zip/21년_04월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2021,4,3409,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2021,5,4396,2664,molit_completion_zip_2021.zip/21년_05월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2021,5,3203,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2021,6,5112,2992,molit_completion_zip_2021.zip/21년_06월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2021,6,4247,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2021,7,7040,4666,molit_completion_zip_2021.zip/21년_07월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2021,7,9575,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2021,8,5848,3874,molit_completion_zip_2021.zip/21년_08월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2021,8,4050,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2021,9,4445,2355,molit_completion_zip_2021.zip/21년_09월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2021,9,4024,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2021,10,3208,1636,molit_completion_zip_2021.zip/21년_10월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2021,10,4522,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2021,11,6128,3969,molit_completion_zip_2021.zip/21년_11월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2021,11,5548,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2021,12,10173,7851,molit_completion_zip_2021.zip/21년_12월_준공실적(홈페이지게시용).xls,monthly_file
+준공,2021,12,8333,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2022,,53256,31836,molit_completion_202212.xls,dec_file_ytd
+준공,2022,,53256,31836,molit_completion_ts_type_2005_2025.xlsx,timeseries_type
+준공,2022,1,6226,4030,molit_completion_zip_2022.zip/22년 01월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2022,1,6226,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2022,2,2281,810,molit_completion_zip_2022.zip/22년 02월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2022,2,2281,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2022,3,5978,4521,molit_completion_zip_2022.zip/22년 03월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2022,3,5978,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2022,4,5507,3737,molit_completion_zip_2022.zip/22년 04월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2022,4,5507,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2022,5,3034,1121,molit_completion_zip_2022.zip/22년 05월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2022,5,3034,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2022,6,2988,833,molit_completion_zip_2022.zip/22년 06월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2022,6,2988,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2022,7,2678,496,molit_completion_zip_2022.zip/22년 07월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2022,7,2678,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2022,8,7659,5666,molit_completion_zip_2022.zip/22년 08월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2022,8,7659,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2022,9,2110,272,molit_completion_zip_2022.zip/22년 09월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2022,9,2110,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2022,10,4563,3308,molit_completion_zip_2022.zip/22년 10월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2022,10,4563,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2022,11,3985,2377,molit_completion_zip_2022.zip/22년 11월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2022,11,3985,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2022,12,6247,4665,molit_completion_zip_2022.zip/22년 12월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2022,12,6247,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2023,,52060,38028,molit_completion_202312.xls,dec_file_ytd
+준공,2023,,52060,38028,molit_completion_ts_type_2005_2025.xlsx,timeseries_type
+준공,2023,1,3319,2179,molit_completion_zip_2023.zip/23년 01월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2023,1,3319,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2023,2,3885,2397,molit_completion_zip_2023.zip/23년 02월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2023,2,3885,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2023,3,2874,1316,molit_completion_zip_2023.zip/23년 03월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2023,3,2874,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2023,4,2851,1192,molit_completion_zip_2023.zip/23년 04월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2023,4,2851,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2023,5,1498,443,molit_completion_zip_2023.zip/23년 05월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2023,5,1498,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2023,6,7619,5826,molit_completion_zip_2023.zip/23년 06월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2023,6,7619,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2023,7,10609,9572,molit_completion_zip_2023.zip/23년 07월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2023,7,10609,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2023,8,5001,3832,molit_completion_zip_2023.zip/23년 08월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2023,8,5001,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2023,9,1939,995,molit_completion_zip_2023.zip/23년 09월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2023,9,1939,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2023,10,1946,1384,molit_completion_zip_2023.zip/23년 10월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2023,10,1946,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2023,11,8376,7454,molit_completion_zip_2023.zip/23년 11월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2023,11,8376,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2023,12,2143,1438,molit_completion_zip_2023.zip/23년 12월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2023,12,2143,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2024,,39119,32988,molit_completion_202412.xls,dec_file_ytd
+준공,2024,,39119,32988,molit_completion_ts_type_2005_2025.xlsx,timeseries_type
+준공,2024,1,3407,2687,molit_completion_zip_2024.zip/24년 01월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2024,1,3407,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2024,2,1930,1407,molit_completion_zip_2024.zip/24년 02월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2024,2,1930,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2024,3,1282,785,molit_completion_zip_2024.zip/24년 03월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2024,3,1282,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2024,4,1533,1114,molit_completion_zip_2024.zip/24년 04월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2024,4,1533,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2024,5,1025,206,molit_completion_zip_2024.zip/24년 05월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2024,5,1025,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2024,6,1810,1331,molit_completion_zip_2024.zip/24년 06월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2024,6,1810,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2024,7,2557,1988,molit_completion_zip_2024.zip/24년 07월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2024,7,2557,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2024,8,2432,2104,molit_completion_zip_2024.zip/24년 08월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2024,8,2432,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2024,9,2116,1619,molit_completion_zip_2024.zip/24년 09월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2024,9,2116,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2024,10,3387,3009,molit_completion_zip_2024.zip/24년 10월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2024,10,3387,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2024,11,13719,13386,molit_completion_zip_2024.zip/24년 11월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2024,11,13719,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2024,12,3921,3352,molit_completion_zip_2024.zip/24년 12월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2024,12,3921,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2025,,46708,41893,molit_completion_202512.xls,dec_file_ytd
+준공,2025,,54653,49973,molit_completion_ts_type_2005_2025.xlsx,timeseries_type
+준공,2025,1,4761,4240,molit_completion_zip_2025.zip/25년 01월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2025,1,4762,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2025,2,1970,1574,molit_completion_zip_2025.zip/25년 02월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2025,2,2284,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2025,3,2871,2550,molit_completion_zip_2025.zip/25년 03월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2025,3,3469,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2025,4,5818,5622,molit_completion_zip_2025.zip/25년 04월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2025,4,8575,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2025,5,2265,1926,molit_completion_zip_2025.zip/25년 05월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2025,5,3350,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2025,6,8198,7773,molit_completion_zip_2025.zip/25년 06월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2025,6,9178,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2025,7,4117,3702,molit_completion_zip_2025.zip/25년 07월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2025,7,5286,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2025,8,1695,1214,molit_completion_zip_2025.zip/25년 08월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2025,8,3167,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2025,9,918,416,molit_completion_zip_2025.zip/25년 09월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2025,9,922,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2025,10,2043,1721,molit_completion_zip_2025.zip/25년 10월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2025,10,2025,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2025,11,8846,8291,molit_completion_zip_2025.zip/25년 11월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2025,11,8439,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2025,12,3206,2864,molit_completion_zip_2025.zip/25년 12월 준공실적(홈페이지게시용).xls,monthly_file
+준공,2025,12,3196,,molit_completion_ts_month_region_2005_2025.xlsx,timeseries_month_region
+준공,2026,1,3817,3504,molit_completion_202601.xls,monthly_file
+준공,2026,2,1703,1246,molit_completion_202602.xls,monthly_file
+준공,2026,3,1861,1207,molit_completion_202603.xls,monthly_file
+준공,2026,4,3816,3320,molit_completion_202604.xls,monthly_file
+준공,2026,5,1914,1413,molit_completion_202605.xls,monthly_file
+준공,2026,6,2049,1561,molit_completion_202606.xls,monthly_file
+준공,2026,7,5756,5352,molit_completion_202607.xls,monthly_file
+준공,2026,8,25630,21933,molit_completion_202608.xls,latest_file_ytd
+준공,2026,8,4714,4330,molit_completion_202608.xls,monthly_file

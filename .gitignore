@@ -8,3 +8,10 @@ data/external/housing_permit_raw/
 # 미분양 월별 원본 (통계누리 xlsx·zip, 약 88MB) — 파싱한 parquet만 커밋
 data/external/unsold_raw/*
 !data/external/unsold_raw/_manifest.csv
+# 건축물대장 표제부 원본 (동별 parquet) — 합친 parquet만 커밋
+data/external/building_register_raw/
+# 국토부 인허가·준공 공식 원본 (통계누리, 약 26MB) — 추출 CSV·manifest만 커밋
+data/external/supply_official/*
+!data/external/supply_official/_manifest.csv
+!data/external/supply_official/molit_seoul_permit_completion.csv
+!data/external/supply_official/molit_permit_202112.xls
