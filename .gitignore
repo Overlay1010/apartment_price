@@ -2,3 +2,9 @@
 
 # 상가(상권)정보 원본 (서울 CSV 25개, 약 6.9GB) — 학원 추출 parquet만 커밋
 data/external/상가정보/
+
+# 주택인허가 원장 원본 (동별 JSONL) — 합친 parquet만 커밋
+data/external/housing_permit_raw/
+# 미분양 월별 원본 (통계누리 xlsx·zip, 약 88MB) — 파싱한 parquet만 커밋
+data/external/unsold_raw/*
+!data/external/unsold_raw/_manifest.csv
