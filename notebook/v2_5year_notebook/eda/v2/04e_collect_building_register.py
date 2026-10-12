@@ -111,7 +111,16 @@ def collect_dong(sigungu, bjdong, total):
 
     items = []
     for page in range(1, (total + PAGE_SIZE - 1) // PAGE_SIZE + 1):
-        _, page_items = call(sigungu, bjdong, page=page)
+        try:
+            _, page_items = call(sigungu, bjdong, page=page, retries=4)
+        except DailyLimitError:
+            raise
+        except RuntimeError:
+            # 서버 시간 초과(SERVICETIMEOUT)가 반복되는 페이지는 20건씩 나눠 받는다
+            small, page_items = 20, []
+            for sub in range((page - 1) * PAGE_SIZE // small + 1, page * PAGE_SIZE // small + 1):
+                _, sub_items = call(sigungu, bjdong, page=sub, rows=small)
+                page_items.extend(sub_items)
         items.extend(page_items)
 
     pd.DataFrame(items).astype(str).to_parquet(path, index=False)
@@ -123,13 +132,24 @@ def main():
     index = discover_dongs()
     print(f"기록이 있는 법정동: {len(index)}개, 예상 기록 수 {index['totalCount'].astype(int).sum():,}")
 
-    mismatched = []
+    mismatched, failed = [], []
     for i, r in enumerate(index.itertuples(), 1):
-        got = collect_dong(r.sigunguCd, r.bjdongCd, int(r.totalCount))
+        try:
+            got = collect_dong(r.sigunguCd, r.bjdongCd, int(r.totalCount))
+        except DailyLimitError:
+            raise
+        except RuntimeError as e:
+            failed.append((r.sigunguCd, r.bjdongCd))  # 다시 실행하면 이 동부터 이어서 받는다
+            print(f"  건너뜀: {e}")
+            continue
         if got != int(r.totalCount):
             mismatched.append((r.sigunguCd, r.bjdongCd, r.totalCount, got))
         if i % 25 == 0:
             print(f"  {i}/{len(index)} 동 완료")
+
+    if failed:
+        print(f"실패한 동 {len(failed)}개 — 다시 실행하세요: {failed}")
+        return
 
     data = pd.concat([pd.read_parquet(p) for p in sorted(RAW_DIR.glob("11*.parquet"))], ignore_index=True)
     data["자치구"] = data["sigunguCd"].map(SEOUL_GU)
