@@ -15,3 +15,5 @@ data/external/supply_official/*
 !data/external/supply_official/_manifest.csv
 !data/external/supply_official/molit_seoul_permit_completion.csv
 !data/external/supply_official/molit_permit_202112.xls
+# 건축물대장 표제부 전체 (약 41MB) — 공동주택만 추린 building_register_apt_*.parquet만 커밋
+data/external/building_register_title_seoul_*.parquet
