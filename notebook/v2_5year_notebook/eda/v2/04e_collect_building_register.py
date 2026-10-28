@@ -7,8 +7,13 @@
 - 동 단위 parquet으로 저장하므로 끊겨도 다시 실행하면 이어서 받는다 (일일 호출 한도에 걸리면 다음 날 재실행).
 - 원장과 마찬가지로 현재 snapshot이다. 파일명에 수집일을 남긴다.
 
-실행: python notebook/v2_5year_notebook/eda/v2/04e_collect_building_register.py
+- 총괄표제부(getBrRecapTitleInfo, 단지 전체 주차대수·동수 등)도 받을 수 있다: 인자 recap.
+  법정동 목록은 표제부 탐색 결과(_dong_index_*.csv)를 재사용한다.
+
+실행: python notebook/v2_5year_notebook/eda/v2/04e_collect_building_register.py [title|recap]
 """
+
+import sys
 
 import time
 from datetime import date
@@ -28,11 +33,14 @@ def find_project_root(start=Path(__file__).resolve()):
 
 PROJECT_DIR = find_project_root()
 EXTERNAL_DIR = PROJECT_DIR / "data" / "external"
-RAW_DIR = EXTERNAL_DIR / "building_register_raw"
+KIND = sys.argv[1] if len(sys.argv) > 1 else "title"
+OPERATIONS = {"title": "getBrTitleInfo", "recap": "getBrRecapTitleInfo"}
+INDEX_DIR = EXTERNAL_DIR / "building_register_raw"  # 법정동 목록은 표제부 탐색 결과를 공용으로 쓴다
+RAW_DIR = INDEX_DIR if KIND == "title" else EXTERNAL_DIR / f"building_register_{KIND}_raw"
 SNAPSHOT = date.today().strftime("%Y%m%d")
-OUTPUT_PATH = EXTERNAL_DIR / f"building_register_title_seoul_{SNAPSHOT}.parquet"
+OUTPUT_PATH = EXTERNAL_DIR / f"building_register_{KIND}_seoul_{SNAPSHOT}.parquet"
 
-URL = "https://apis.data.go.kr/1613000/BldRgstHubService/getBrTitleInfo"
+URL = f"https://apis.data.go.kr/1613000/BldRgstHubService/{OPERATIONS[KIND]}"
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 PAGE_SIZE = 100
 MIN_INTERVAL = 0.4
@@ -88,6 +96,20 @@ def call(sigungu, bjdong, page=1, rows=PAGE_SIZE, retries=8):
 
 
 def discover_dongs():
+    if KIND != "title":
+        # 표제부 탐색에서 찾은 법정동만 다시 조회해 이 기능의 건수를 얻는다
+        base = pd.concat([pd.read_csv(p, dtype=str) for p in sorted(INDEX_DIR.glob("_dong_index_*.csv"))])
+        path = RAW_DIR / "_dong_index.csv"
+        if not path.exists():
+            rows = []
+            for r in base.itertuples():
+                total, _ = call(r.sigunguCd, r.bjdongCd, rows=1)
+                if total:
+                    rows.append({"sigunguCd": r.sigunguCd, "자치구": r.자치구, "bjdongCd": r.bjdongCd, "totalCount": total})
+            pd.DataFrame(rows, columns=["sigunguCd", "자치구", "bjdongCd", "totalCount"]).to_csv(
+                path, index=False, encoding="utf-8-sig")
+        return pd.read_csv(path, dtype=str)
+
     parts = []
     for sigungu, gu in SEOUL_GU.items():
         path = RAW_DIR / f"_dong_index_{sigungu}.csv"

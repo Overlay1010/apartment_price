@@ -17,3 +17,6 @@ data/external/supply_official/*
 !data/external/supply_official/molit_permit_202112.xls
 # 건축물대장 표제부 전체 (약 41MB) — 공동주택만 추린 building_register_apt_*.parquet만 커밋
 data/external/building_register_title_seoul_*.parquet
+data/external/building_register_recap_raw/
+# 공시가격 서울 아파트 호 단위 원본 (약 63MB) — 노트북 집계 결과만 커밋
+data/external/official_price/apt_official_price_seoul_*.parquet
