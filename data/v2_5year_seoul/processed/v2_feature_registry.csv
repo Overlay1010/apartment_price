@@ -1,0 +1,480 @@
+﻿dataset,column,role,source,timing,dtype,na_rate,train_constant
+v2_trade,transaction_id,key,key/meta,-,int64,0.0,False
+v2_trade,단지일련번호,key,key/meta,-,object,0.0,False
+v2_trade,시군구명,key,key/meta,-,object,0.0,False
+v2_trade,법정동,meta,key/meta,-,object,0.0,False
+v2_trade,단지명,display,V1,고정(위치·물리) 또는 계약일,string,0.0,False
+v2_trade,계약일자,meta,key/meta,-,datetime64[ns],0.0,False
+v2_trade,거래월일자,meta,key/meta,-,datetime64[ns],0.0,False
+v2_trade,거래금액,target,target,-,Int64,0.0,False
+v2_trade,log_price,target,target,-,Float64,0.0,False
+v2_trade,평당가,target,target,-,float64,0.0,False
+v2_trade,log_평당가,target,target,-,float64,0.0,False
+v2_trade,전용면적,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,층,model,V1,고정(위치·물리) 또는 계약일,int64,0.0,False
+v2_trade,연식,model,V1,고정(위치·물리) 또는 계약일,Int64,0.0001,False
+v2_trade,경과월,model,V1,고정(위치·물리) 또는 계약일,int32,0.0,False
+v2_trade,월_sin,model,V1,고정(위치·물리) 또는 계약일,Float64,0.0,False
+v2_trade,월_cos,model,V1,고정(위치·물리) 또는 계약일,Float64,0.0,False
+v2_trade,위도,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,경도,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,유치원거리_m,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,응급의료기관거리_m,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,주요일자리거리_m,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,거래유형,model,V1,고정(위치·물리) 또는 계약일,object,0.0581,False
+v2_trade,토지임대부아파트여부,model,V1,고정(위치·물리) 또는 계약일,object,0.0,False
+v2_trade,건축년도,meta,key/meta,-,int64,0.0,False
+v2_trade,기준월,meta,key/meta,-,object,0.0,False
+v2_trade,데이터구분,meta,key/meta,-,object,0.0,False
+v2_trade,구_전월_중위가격_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.02,False
+v2_trade,구_전월_중위평당가_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.02,False
+v2_trade,구_전월_거래량_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.02,False
+v2_trade,구_과거3개월_중위가격_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0488,False
+v2_trade,구_과거6개월_중위가격_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0688,False
+v2_trade,구_과거3개월_거래량_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0488,False
+v2_trade,구_과거6개월_거래량_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0688,False
+v2_trade,구_전월_가격변화율_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0373,False
+v2_trade,서울_전월_중위가격_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.02,False
+v2_trade,서울_과거3개월_중위가격_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0488,False
+v2_trade,서울_과거6개월_중위가격_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0688,False
+v2_trade,서울_전월_거래량_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.02,False
+v2_trade,서울_과거3개월_거래량_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0488,False
+v2_trade,서울_전월_가격변화율_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0373,False
+v2_trade,전세평당가_전월_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,전세거래량_전월_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,전세가율_전월_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.02,False
+v2_trade,전세피처출처_전월_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,object,0.0,False
+v2_trade,월세거래량_전월_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,월세비중_전월_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,전세평당가_과거3개월_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,전세거래량_과거3개월_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,전세가율_과거3개월_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0373,False
+v2_trade,전세피처출처_과거3개월_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,object,0.0,False
+v2_trade,월세거래량_과거3개월_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,월세비중_과거3개월_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,전세평당가_과거6개월_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,전세거래량_과거6개월_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,전세가율_과거6개월_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0488,False
+v2_trade,전세피처출처_과거6개월_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,object,0.0,False
+v2_trade,월세거래량_과거6개월_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,월세비중_과거6개월_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,주담대금리_전월_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,주담대금리_3개월변화_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,주담대금리_6개월변화_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,전세대출금리_전월_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,전세대출금리_3개월변화_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,전세대출금리_6개월변화_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,역세권거리_m_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,대규모점포거리_m_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,초등학교거리_m_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,중학교거리_m_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,고등학교거리_m_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,구_확정월_중위가격,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_trade,구_확정월_중위평당가,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_trade,구_확정월_거래량,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_trade,구_확정3개월_중위가격,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_trade,구_확정6개월_중위가격,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_trade,구_확정3개월_거래량,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_trade,구_확정6개월_거래량,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_trade,구_확정월_가격변화율,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_trade,서울_확정월_중위가격,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_trade,서울_확정3개월_중위가격,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_trade,서울_확정6개월_중위가격,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_trade,서울_확정월_거래량,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_trade,서울_확정3개월_거래량,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_trade,서울_확정월_가격변화율,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_trade,전세평당가_확정월,model,06_rent(확정월),m-2월까지 전월세,Float64,0.0,False
+v2_trade,전세거래량_확정월,model,06_rent(확정월),m-2월까지 전월세,float64,0.0,False
+v2_trade,전세가율_확정월,model,06_rent(확정월),m-2월까지 전월세,Float64,0.0,False
+v2_trade,전세피처출처_확정월,ablation,06_rent(확정월),m-2월까지 전월세,object,0.0,False
+v2_trade,월세거래량_확정월,model,06_rent(확정월),m-2월까지 전월세,float64,0.0,False
+v2_trade,월세비중_확정월,model,06_rent(확정월),m-2월까지 전월세,float64,0.0,False
+v2_trade,전세평당가_확정3개월,model,06_rent(확정월),m-2월까지 전월세,float64,0.0,False
+v2_trade,전세거래량_확정3개월,model,06_rent(확정월),m-2월까지 전월세,float64,0.0,False
+v2_trade,전세가율_확정3개월,model,06_rent(확정월),m-2월까지 전월세,float64,0.0,False
+v2_trade,전세피처출처_확정3개월,ablation,06_rent(확정월),m-2월까지 전월세,object,0.0,False
+v2_trade,월세거래량_확정3개월,model,06_rent(확정월),m-2월까지 전월세,float64,0.0,False
+v2_trade,월세비중_확정3개월,model,06_rent(확정월),m-2월까지 전월세,float64,0.0,False
+v2_trade,전세평당가_확정6개월,model,06_rent(확정월),m-2월까지 전월세,float64,0.0,False
+v2_trade,전세거래량_확정6개월,model,06_rent(확정월),m-2월까지 전월세,float64,0.02,False
+v2_trade,전세가율_확정6개월,model,06_rent(확정월),m-2월까지 전월세,float64,0.0,False
+v2_trade,전세피처출처_확정6개월,ablation,06_rent(확정월),m-2월까지 전월세,object,0.0,False
+v2_trade,월세거래량_확정6개월,model,06_rent(확정월),m-2월까지 전월세,float64,0.02,False
+v2_trade,월세비중_확정6개월,model,06_rent(확정월),m-2월까지 전월세,float64,0.02,False
+v2_trade,기준금리_전월,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0,False
+v2_trade,기준금리_3개월변화,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0,False
+v2_trade,기준금리_6개월변화,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0,False
+v2_trade,주담대금리_최근공표,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0,False
+v2_trade,주담대금리_3개월변화_최근공표,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0,False
+v2_trade,주담대금리_6개월변화_최근공표,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.02,False
+v2_trade,전세대출금리_최근공표,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0,False
+v2_trade,전세대출금리_3개월변화_최근공표,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0,False
+v2_trade,전세대출금리_6개월변화_최근공표,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.02,False
+v2_trade,역세권거리_m,model,06_location(시점),"역 개통일 ≤ 계약일, 점포 계약월 1일 영업",float64,0.0,False
+v2_trade,대규모점포거리_m,model,06_location(시점),"역 개통일 ≤ 계약일, 점포 계약월 1일 영업",float64,0.0,False
+v2_trade,학교기준연도,meta,key/meta,-,int64,0.0,False
+v2_trade,최근접초_학교명,display,02_school,6월 이후 당해연도 학교 통계,object,0.0,False
+v2_trade,최근접초_거리_m,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
+v2_trade,최근접초_학생수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
+v2_trade,최근접초_학급당학생수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
+v2_trade,최근접초_교원1인당학생수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
+v2_trade,최근접초_학생수증감률,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0994,False
+v2_trade,최근접초_학생순전입률,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0014,False
+v2_trade,최근접초_학생1인당_교수학습공간,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0036,False
+v2_trade,최근접초_학생1인당_체육장면적,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0409,False
+v2_trade,최근접초_교사동_평균경과년수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0036,False
+v2_trade,최근접중_학교명,display,02_school,6월 이후 당해연도 학교 통계,object,0.0,False
+v2_trade,최근접중_거리_m,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
+v2_trade,최근접중_학생수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
+v2_trade,최근접중_학급당학생수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
+v2_trade,최근접중_교원1인당학생수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
+v2_trade,최근접중_학생수증감률,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0992,False
+v2_trade,최근접중_학생순전입률,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0014,False
+v2_trade,최근접중_학생1인당_교수학습공간,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0044,False
+v2_trade,최근접중_학생1인당_체육장면적,model,02_school,6월 이후 당해연도 학교 통계,float64,0.192,False
+v2_trade,최근접중_교사동_평균경과년수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0125,False
+v2_trade,반경500m_초등학교수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
+v2_trade,반경1km_중학교수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
+v2_trade,반경1km_고등학교수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
+v2_trade,반경1km_초등학생수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
+v2_trade,반경1km_초등순전입률,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0007,False
+v2_trade,학원스냅샷기준월,meta,key/meta,-,object,0.0,False
+v2_trade,학원스냅샷_경과개월,meta,key/meta,-,int64,0.0,False
+v2_trade,반경500m_입시교과학원수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
+v2_trade,반경1km_입시교과학원수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
+v2_trade,반경1km_예체능학원수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
+v2_trade,반경1km_외국어학원수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
+v2_trade,최근접학원가_거리_m,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
+v2_trade,최근접3대학원가_거리_m,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
+v2_trade,최근접학원가명,display,02_school,6월 이후 당해연도 학교 통계,object,0.0,False
+v2_trade,최근접3대학원가명,display,02_school,6월 이후 당해연도 학교 통계,object,0.0,False
+v2_trade,투기과열지구_계약일,model,03_policy_trade,발표 < 계약일,int64,0.0,False
+v2_trade,조정대상지역_계약일,model,03_policy_trade,발표 < 계약일,int64,0.0,False
+v2_trade,토허_구전역_계약일,model,03_policy_trade,발표 < 계약일,int64,0.0,False
+v2_trade,양도세중과_계약일,model,03_policy_trade,발표 < 계약일,int64,0.0,False
+v2_trade,토허_동노출,model,03_policy_trade,발표 < 계약일,int64,0.0,False
+v2_trade,토허_단지지정,model,03_policy_trade,발표 < 계약일,int64,0.0,False
+v2_trade,주담대_LTV_적용,model,03_policy_trade,발표 < 계약일,int64,0.0,False
+v2_trade,고가주택_주담대금지_해당,model,03_policy_trade,발표 < 계약일,int64,0.0,False
+v2_trade,주담대_최대한도_만원,model,03_policy_trade,발표 < 계약일,float64,0.0217,False
+v2_trade,주담대_한도비율,model,03_policy_trade,발표 < 계약일,float64,0.0217,False
+v2_trade,토허_근거,display,03_policy_trade,발표 < 계약일,object,0.7383,False
+v2_trade,예상가격_만원,model,03_policy_trade,발표 < 계약일,float64,0.0217,False
+v2_trade,예상가격_출처,ablation,03_policy_trade,발표 < 계약일,object,0.0,False
+v2_trade,공시연도,meta,key/meta,-,int32,0.0,False
+v2_trade,공시_m2당_단지,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0289,False
+v2_trade,공시_m2당_면적대,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0289,False
+v2_trade,공시기반_추정가,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0289,False
+v2_trade,공시_전년대비,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.045,False
+v2_trade,재건축_단계,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",int64,0.0,False
+v2_trade,재건축_구역,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",int64,0.0,False
+v2_trade,재건축_조합설립이후,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",int64,0.0,False
+v2_trade,사용승인연도,meta,key/meta,-,float64,0.0065,False
+v2_trade,동수,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0063,False
+v2_trade,세대수,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.006,False
+v2_trade,최고층,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0063,False
+v2_trade,평균층,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0063,False
+v2_trade,지하층,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0063,False
+v2_trade,승강기_100세대,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.4911,False
+v2_trade,세대당_주차,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.1533,False
+v2_trade,용적률,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.1682,False
+v2_trade,건폐율,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.1668,False
+v2_trade,면적기준연도,meta,key/meta,-,float64,0.0033,False
+v2_trade,전용_중위,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",Float64,0.0033,False
+v2_trade,전용_IQR,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",Float64,0.0033,False
+v2_trade,소형60이하_비중,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",Float64,0.0033,False
+v2_trade,대형85초과_비중,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",Float64,0.0033,False
+v2_trade,공시_호수_최근,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",Int64,0.0033,False
+v2_trade,매매수급지수_lag2,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_trade,전세수급지수_lag2,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_trade,주택가격전망CSI_lag1,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_trade,CCSI_lag1,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_trade,매매수급지수_diff1,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_trade,전세수급지수_diff1,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_trade,주택가격전망CSI_diff1,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_trade,CCSI_diff1,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_trade,매매가격지수_전월증감률_lag2,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_trade,전세가격지수_전월증감률_lag2,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_trade,매매가격지수_momentum3m,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_trade,전세가격지수_momentum3m,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_trade,매매수급지수_diff3m,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_trade,전세수급지수_diff3m,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_trade,주택가격전망CSI_diff3m,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_trade,CCSI_diff3m,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_trade,투기과열지구,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_trade,조정대상지역,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_trade,투기지역,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_trade,분양가상한제,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_trade,분양가상한제_일부동,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_trade,토허_구전역,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_trade,토허_일부동,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_trade,DSR단계,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_trade,스트레스DSR단계,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_trade,LTV_무주택,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_trade,고가주택_주담대금지,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_trade,주담대_6억상한,model,03_policy,발표 < m월 1일,int64,0.0,True
+v2_trade,주담대_가격차등,model,03_policy,발표 < m월 1일,int64,0.0,True
+v2_trade,양도세중과_적용,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_trade,정책_강화수_3m,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_trade,정책_완화수_3m,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_trade,정책_순강도_3m,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_trade,정책_강화수_6m,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_trade,정책_완화수_6m,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_trade,정책_순강도_6m,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_trade,대출_순강도_6m,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_trade,지역지정_순강도_6m,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_trade,세제_순강도_6m,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_trade,공급_강도합_6m,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_trade,경과개월_최근강화,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_trade,경과개월_최근완화,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_trade,시행대기_강화수,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_trade,시행대기_완화수,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_trade,시행대기_순강도,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_trade,평균_한도비율,model,03_policy,발표 < m월 1일,float64,0.0373,False
+v2_trade,상한구속_비중,model,03_policy,발표 < m월 1일,float64,0.0373,False
+v2_trade,고가15억초과_비중,model,03_policy,발표 < m월 1일,float64,0.0373,False
+v2_trade,인허가아파트_서울_6m,model,04_supply,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,인허가아파트_서울_12m,model,04_supply,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,준공아파트_서울_3m,model,04_supply,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,준공아파트_서울_6m,model,04_supply,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,준공아파트_서울_12m,model,04_supply,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,미분양_구,ablation,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_trade,준공후미분양_구,ablation,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_trade,미분양_있음,model,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_trade,미분양_서울,model,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_trade,준공후미분양_서울,model,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_trade,미분양_서울_3m변화,model,04_supply,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,분양공고세대_3m,ablation,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_trade,분양공고세대_6m,ablation,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_trade,분양공고세대_12m,ablation,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_trade,입주예정_공고기준_24m,ablation,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_trade,분양공고세대_3m_서울,model,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_trade,분양공고세대_6m_서울,model,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_trade,분양공고세대_12m_서울,model,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_trade,입주예정_공고기준_24m_서울,model,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_trade,공공분양세대_12m_서울,model,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_trade,인구_3m증감률,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,인구_12m증감률,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,세대_12m증감률,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,세대원수_12m변화,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,비중_30_44세_12m변화,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,비중_65세이상_12m변화,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,순이동률_3m,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,순이동률_6m,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,순이동률_12m,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,타구전입_비중_3m,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,외지인매입_비중_3m,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,서울외매입_비중_3m,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,30대매입_비중_3m,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,서울_순이동률_12m,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,서울_외지인매입_비중_3m,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_trade,분양공고세대_3m_재고천호당,model,06_supply_ratio,"공급 M+2, 재고 t년 → t+1년 8월",float64,0.0,False
+v2_trade,분양공고세대_6m_재고천호당,model,06_supply_ratio,"공급 M+2, 재고 t년 → t+1년 8월",float64,0.0,False
+v2_trade,분양공고세대_12m_재고천호당,model,06_supply_ratio,"공급 M+2, 재고 t년 → t+1년 8월",float64,0.0,False
+v2_trade,입주예정_공고기준_24m_재고천호당,model,06_supply_ratio,"공급 M+2, 재고 t년 → t+1년 8월",float64,0.0,False
+v2_trade,미분양_구_재고천호당,model,06_supply_ratio,"공급 M+2, 재고 t년 → t+1년 8월",float64,0.0,False
+v2_trade,준공후미분양_구_재고천호당,model,06_supply_ratio,"공급 M+2, 재고 t년 → t+1년 8월",float64,0.0,False
+v2_region_month,자치구,key,key/meta,-,object,0.0,False
+v2_region_month,예측시점,meta,key/meta,-,datetime64[ns],0.0,False
+v2_region_month,향후3개월_변화율,target,target,-,float64,0.0333,False
+v2_region_month,상승여부,target,target,-,float64,0.0333,False
+v2_region_month,구_확정월기준_평당가,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_region_month,구_확정월기준_평당가_1개월변화율,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_region_month,구_확정월기준_평당가_3개월변화율,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_region_month,구_확정월기준_평당가_6개월변화율,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_region_month,구_확정월기준_중위평당가_3개월,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_region_month,구_확정월기준_중위평당가_6개월,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_region_month,구_확정월기준_가격변동성_6개월,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_region_month,구_확정월기준_거래량,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_region_month,구_확정월기준_평균거래량_3개월,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_region_month,구_확정월기준_평균거래량_6개월,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_region_month,구_확정월기준_거래량_전월대비,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_region_month,구_확정월기준_거래량_3개월평균대비,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_region_month,구_확정월기준_실현_3개월변화율,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_region_month,서울_확정월기준_1개월변화율,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_region_month,서울_확정월기준_3개월변화율,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_region_month,서울_확정월기준_6개월변화율,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_region_month,서울_확정월기준_거래량,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_region_month,서울_확정월기준_상승구비율,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_region_month,서울_확정월기준_강한상승구비율,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_region_month,서울_확정월기준_강한하락구비율,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
+v2_region_month,구_확정월_전세평당가,model,06_rent(확정월),m-2월까지 전월세,Float64,0.0,False
+v2_region_month,구_확정월_전세거래량,model,06_rent(확정월),m-2월까지 전월세,float64,0.0,False
+v2_region_month,구_확정3개월_전세평당가,model,06_rent(확정월),m-2월까지 전월세,float64,0.0,False
+v2_region_month,구_확정3개월_전세거래량,model,06_rent(확정월),m-2월까지 전월세,float64,0.0,False
+v2_region_month,구_확정6개월_전세평당가,model,06_rent(확정월),m-2월까지 전월세,float64,0.0,False
+v2_region_month,구_확정6개월_전세거래량,model,06_rent(확정월),m-2월까지 전월세,float64,0.0167,False
+v2_region_month,구_확정월_월세거래량,model,06_rent(확정월),m-2월까지 전월세,float64,0.0,False
+v2_region_month,구_확정월_월세비중,model,06_rent(확정월),m-2월까지 전월세,float64,0.0,False
+v2_region_month,구_확정3개월_월세거래량,model,06_rent(확정월),m-2월까지 전월세,float64,0.0,False
+v2_region_month,구_확정3개월_월세비중,model,06_rent(확정월),m-2월까지 전월세,float64,0.0,False
+v2_region_month,구_확정6개월_월세거래량,model,06_rent(확정월),m-2월까지 전월세,float64,0.0167,False
+v2_region_month,구_확정6개월_월세비중,model,06_rent(확정월),m-2월까지 전월세,float64,0.0167,False
+v2_region_month,구_확정월_전세가율,model,06_rent(확정월),m-2월까지 전월세,Float64,0.0,False
+v2_region_month,구_확정3개월_전세가율,model,06_rent(확정월),m-2월까지 전월세,float64,0.0,False
+v2_region_month,구_확정6개월_전세가율,model,06_rent(확정월),m-2월까지 전월세,float64,0.0,False
+v2_region_month,기준금리_전월,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0,False
+v2_region_month,기준금리_3개월변화,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0,False
+v2_region_month,기준금리_6개월변화,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0,False
+v2_region_month,주담대금리_최근공표,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0,False
+v2_region_month,주담대금리_3개월변화_최근공표,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0,False
+v2_region_month,주담대금리_6개월변화_최근공표,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0167,False
+v2_region_month,전세대출금리_최근공표,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0,False
+v2_region_month,전세대출금리_3개월변화_최근공표,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0,False
+v2_region_month,전세대출금리_6개월변화_최근공표,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0167,False
+v2_region_month,기준월,meta,key/meta,-,object,0.0,False
+v2_region_month,권역,model,01_market,"부동산원 m-2, 한은 m-1",object,0.0,False
+v2_region_month,매매수급지수_lag2,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_region_month,전세수급지수_lag2,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_region_month,주택가격전망CSI_lag1,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_region_month,CCSI_lag1,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_region_month,매매수급지수_diff1,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_region_month,전세수급지수_diff1,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_region_month,주택가격전망CSI_diff1,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_region_month,CCSI_diff1,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_region_month,매매가격지수_전월증감률_lag2,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_region_month,전세가격지수_전월증감률_lag2,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_region_month,매매가격지수_momentum3m,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_region_month,전세가격지수_momentum3m,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_region_month,매매수급지수_diff3m,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_region_month,전세수급지수_diff3m,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_region_month,주택가격전망CSI_diff3m,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_region_month,CCSI_diff3m,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
+v2_region_month,투기과열지구,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_region_month,조정대상지역,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_region_month,투기지역,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_region_month,분양가상한제,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_region_month,분양가상한제_일부동,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_region_month,토허_구전역,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_region_month,토허_일부동,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_region_month,DSR단계,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_region_month,스트레스DSR단계,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_region_month,LTV_무주택,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_region_month,고가주택_주담대금지,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_region_month,주담대_6억상한,model,03_policy,발표 < m월 1일,int64,0.0,True
+v2_region_month,주담대_가격차등,model,03_policy,발표 < m월 1일,int64,0.0,True
+v2_region_month,양도세중과_적용,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_region_month,정책_강화수_3m,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_region_month,정책_완화수_3m,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_region_month,정책_순강도_3m,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_region_month,정책_강화수_6m,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_region_month,정책_완화수_6m,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_region_month,정책_순강도_6m,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_region_month,대출_순강도_6m,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_region_month,지역지정_순강도_6m,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_region_month,세제_순강도_6m,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_region_month,공급_강도합_6m,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_region_month,경과개월_최근강화,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_region_month,경과개월_최근완화,model,03_policy,발표 < m월 1일,float64,0.0,False
+v2_region_month,시행대기_강화수,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_region_month,시행대기_완화수,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_region_month,시행대기_순강도,model,03_policy,발표 < m월 1일,int64,0.0,False
+v2_region_month,평균_한도비율,model,03_policy,발표 < m월 1일,float64,0.0333,False
+v2_region_month,상한구속_비중,model,03_policy,발표 < m월 1일,float64,0.0333,False
+v2_region_month,고가15억초과_비중,model,03_policy,발표 < m월 1일,float64,0.0333,False
+v2_region_month,인허가아파트_서울_6m,model,04_supply,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,인허가아파트_서울_12m,model,04_supply,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,준공아파트_서울_3m,model,04_supply,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,준공아파트_서울_6m,model,04_supply,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,준공아파트_서울_12m,model,04_supply,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,미분양_구,ablation,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_region_month,준공후미분양_구,ablation,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_region_month,미분양_있음,model,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_region_month,미분양_서울,model,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_region_month,준공후미분양_서울,model,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_region_month,미분양_서울_3m변화,model,04_supply,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,분양공고세대_3m,ablation,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_region_month,분양공고세대_6m,ablation,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_region_month,분양공고세대_12m,ablation,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_region_month,입주예정_공고기준_24m,ablation,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_region_month,분양공고세대_3m_서울,model,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_region_month,분양공고세대_6m_서울,model,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_region_month,분양공고세대_12m_서울,model,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_region_month,입주예정_공고기준_24m_서울,model,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_region_month,공공분양세대_12m_서울,model,04_supply,공표 M+1 → m=M+2,int64,0.0,False
+v2_region_month,인구_3m증감률,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,인구_12m증감률,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,세대_12m증감률,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,세대원수_12m변화,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,비중_30_44세_12m변화,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,비중_65세이상_12m변화,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,순이동률_3m,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,순이동률_6m,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,순이동률_12m,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,타구전입_비중_3m,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,외지인매입_비중_3m,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,서울외매입_비중_3m,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,30대매입_비중_3m,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,서울_순이동률_12m,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,서울_외지인매입_비중_3m,model,05_demographics,공표 M+1 → m=M+2,float64,0.0,False
+v2_region_month,분양공고세대_3m_재고천호당,model,06_supply_ratio,"공급 M+2, 재고 t년 → t+1년 8월",float64,0.0,False
+v2_region_month,분양공고세대_6m_재고천호당,model,06_supply_ratio,"공급 M+2, 재고 t년 → t+1년 8월",float64,0.0,False
+v2_region_month,분양공고세대_12m_재고천호당,model,06_supply_ratio,"공급 M+2, 재고 t년 → t+1년 8월",float64,0.0,False
+v2_region_month,입주예정_공고기준_24m_재고천호당,model,06_supply_ratio,"공급 M+2, 재고 t년 → t+1년 8월",float64,0.0,False
+v2_region_month,미분양_구_재고천호당,model,06_supply_ratio,"공급 M+2, 재고 t년 → t+1년 8월",float64,0.0,False
+v2_region_month,준공후미분양_구_재고천호당,model,06_supply_ratio,"공급 M+2, 재고 t년 → t+1년 8월",float64,0.0,False
+v2_region_month,데이터구분,meta,key/meta,-,object,0.0,False
+v2_complex,단지일련번호,key,key/meta,-,object,0.0,False
+v2_complex,단지명,display,V1,고정(위치·물리) 또는 계약일,string,0.0,False
+v2_complex,시군구명,key,key/meta,-,object,0.0,False
+v2_complex,법정동,meta,key/meta,-,object,0.0,False
+v2_complex,건축년도,meta,key/meta,-,int64,0.0,False
+v2_complex,위도,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_complex,경도,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_complex,유치원거리_m,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_complex,응급의료기관거리_m,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_complex,주요일자리거리_m,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_complex,거래건수_학습기간,meta,key/meta,-,int64,0.0,False
+v2_complex,첫거래월,meta,key/meta,-,datetime64[ns],0.0,False
+v2_complex,마지막거래월,meta,key/meta,-,datetime64[ns],0.0,False
+v2_complex,사용승인연도,meta,key/meta,-,float64,0.0133,False
+v2_complex,동수,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0116,False
+v2_complex,세대수,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0113,False
+v2_complex,최고층,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0117,False
+v2_complex,평균층,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0117,False
+v2_complex,지하층,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0116,False
+v2_complex,승강기_100세대,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.2989,False
+v2_complex,세대당_주차,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.1221,False
+v2_complex,용적률,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0943,False
+v2_complex,건폐율,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0939,False
+v2_complex,면적기준연도,meta,key/meta,-,float64,0.0038,False
+v2_complex,전용_중위,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",Float64,0.0038,False
+v2_complex,전용_IQR,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",Float64,0.0038,False
+v2_complex,소형60이하_비중,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",Float64,0.0038,False
+v2_complex,대형85초과_비중,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",Float64,0.0038,False
+v2_complex,공시_호수_최근,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",Int64,0.0038,False
+v2_complex,역세권거리_m_학습기준,model,06_location(시점),"역 개통일 ≤ 계약일, 점포 계약월 1일 영업",float64,0.0,False
+v2_complex,대규모점포거리_m_학습기준,model,06_location(시점),"역 개통일 ≤ 계약일, 점포 계약월 1일 영업",float64,0.0,False
+v2_complex,역세권거리_m_최신,display,06_location(시점),"역 개통일 ≤ 계약일, 점포 계약월 1일 영업",float64,0.0,False
+v2_complex,대규모점포거리_m_최신,display,06_location(시점),"역 개통일 ≤ 계약일, 점포 계약월 1일 영업",float64,0.0,False
+v2_complex,최근접초_학교명,display,02_school,6월 이후 당해연도 학교 통계,object,0.0,False
+v2_complex,최근접초_거리_m,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
+v2_complex,최근접초_학생수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
+v2_complex,최근접초_학급당학생수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
+v2_complex,최근접초_교원1인당학생수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
+v2_complex,최근접초_학생수증감률,model,02_school,6월 이후 당해연도 학교 통계,float64,0.003,False
+v2_complex,최근접초_학생순전입률,model,02_school,6월 이후 당해연도 학교 통계,float64,0.003,False
+v2_complex,최근접초_학생1인당_교수학습공간,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0023,False
+v2_complex,최근접초_학생1인당_체육장면적,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0327,False
+v2_complex,최근접초_교사동_평균경과년수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0023,False
+v2_complex,최근접중_학교명,display,02_school,6월 이후 당해연도 학교 통계,object,0.0,False
+v2_complex,최근접중_거리_m,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
+v2_complex,최근접중_학생수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
+v2_complex,최근접중_학급당학생수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
+v2_complex,최근접중_교원1인당학생수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
+v2_complex,최근접중_학생수증감률,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
+v2_complex,최근접중_학생순전입률,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
+v2_complex,최근접중_학생1인당_교수학습공간,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0024,False
+v2_complex,최근접중_학생1인당_체육장면적,model,02_school,6월 이후 당해연도 학교 통계,float64,0.1894,False
+v2_complex,최근접중_교사동_평균경과년수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0095,False
+v2_complex,반경500m_초등학교수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
+v2_complex,반경1km_중학교수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
+v2_complex,반경1km_고등학교수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
+v2_complex,반경1km_초등학생수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
+v2_complex,반경1km_초등순전입률,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0023,False
+v2_complex,공시_m2당_학습기준,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0215,False
+v2_complex,공시_전년대비_학습기준,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0327,False
+v2_complex,공시_m2당_최신,display,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0103,False
+v2_complex,공시_전년대비_최신,display,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0168,False
+v2_complex,재건축_단계_학습기준,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",int64,0.0,False
+v2_complex,재건축_단계_최신,display,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",int64,0.0,False
