@@ -79,3 +79,6 @@ widgetsnbextension==4.0.16
 xgboost==3.4.1
 xlrd==2.0.2
 xmltodict==0.14.2
+lightgbm==4.7.0
+catboost==1.2.10
+optuna==4.6.0

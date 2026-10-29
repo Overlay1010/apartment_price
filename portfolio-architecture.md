@@ -1340,13 +1340,12 @@ V2에서 발견한 원본 데이터 문제를 파이프라인 검사로 자동�
 
   ```text
   main      ← 버전이 끝났을 때만 develop → main PR 병합 + 버전 태그 (항상 '완료된 버전' 상태)
-  develop   ← 단계 작업 통합
-  feature/* ← 단계 · 기능 단위 (예: feature/v2.2-regression, feature/web-screener) → develop PR
+  develop   ← 모든 작업 (개인 프로젝트라 feature 브랜치는 두지 않는다)
   ```
 
   - `main`에 직접 커밋하지 않는다. **`develop → main` PR은 버전 하나가 완전히 끝났을 때만** 연다 (아래 태그 표의 한 줄 = PR 하나).
     중간 커밋 · 문서 수정은 develop에 쌓았다가 그 버전 PR에 함께 들어간다. 버전 태그는 병합 커밋에 붙인다.
-  - Phase 6부터 feature 브랜치는 서비스 범위 이름을 쓴다 (`feature/analysis-*`, `feature/core-*`), PR은 CI 통과 후 병합.
+  - `develop → main` PR은 CI(Phase 6부터) 통과 후 병합한다.
   - 지난 버전 사이 변경은 GitHub 비교 화면으로 본다: `compare/v1.0...v2.0-features`, `compare/v2.0-features...v2.1-clustering`
 - 커밋: 의미 있는 실험/기능 단위, 서비스 범위를 앞에 붙인다
   - `add infrastructure clustering features`
