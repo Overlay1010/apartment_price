@@ -1336,7 +1336,17 @@ V2에서 발견한 원본 데이터 문제를 파이프라인 검사로 자동�
 # 17. 형상관리 방침
 
 - 저장소: 모노레포 (서비스 · 패키지 · 인프라를 한 저장소에서 관리, 3장)
-- 브랜치: 개인 프로젝트는 `main` 중심. Phase 6부터는 서비스 단위 기능 브랜치 → PR로 CI 통과 후 병합
+- 브랜치 (2026-10-30부터, v2.1까지의 이력은 `main`에 그대로 둔다)
+
+  ```text
+  main      ← 버전이 끝났을 때만 develop → main PR 병합 + 버전 태그 (항상 '완료된 버전' 상태)
+  develop   ← 단계 작업 통합
+  feature/* ← 단계 · 기능 단위 (예: feature/v2.2-regression, feature/web-screener) → develop PR
+  ```
+
+  - `main`에 직접 커밋하지 않는다. 버전 태그는 `develop → main` 병합 커밋에 붙인다.
+  - Phase 6부터 feature 브랜치는 서비스 범위 이름을 쓴다 (`feature/analysis-*`, `feature/core-*`), PR은 CI 통과 후 병합.
+  - 지난 버전 사이 변경은 GitHub 비교 화면으로 본다: `compare/v1.0...v2.0-features`, `compare/v2.0-features...v2.1-clustering`
 - 커밋: 의미 있는 실험/기능 단위, 서비스 범위를 앞에 붙인다
   - `add infrastructure clustering features`
   - `compare regression with cluster features`
@@ -1352,8 +1362,16 @@ V2에서 발견한 원본 데이터 문제를 파이프라인 검사로 자동�
   | `v1.0` | `7b57a78` | V1 최종: 5년치 데이터 군집 · 회귀 · 분류 + 노트북 정리 (2026-08-30) |
   | `v2.0-features` | `263b3bc` | V2 Feature 01~06 완료 (2026-10-29) |
   | `v2.1-clustering` | `8ce0d0d` | 21 규칙 태그 · 분석용 군집 · 유사 단지 + 위치 Feature 시점 보완 (2026-10-29) |
-  | `v2.2-regression` · `v2.3-classification` | 예정 | 11 회귀 · 31 분류 |
-  | `v3.0-service` | 예정 | `apt-core` 모듈화 + 웹 MVP |
+  | `v2.2-regression` | 예정 | 11 회귀 (Phase 4-2) |
+  | `v2.3-classification` | 예정 | 31 분류 + 서비스 통합 결과 (Phase 4-2) → V2 모델링 완료 |
+  | `v3.0-core` | 예정 | `apt-core` 모듈화 + 데이터 갱신 파이프라인 (Phase 5) |
+  | `v3.1-web-mvp` | 예정 | 웹 MVP: 분석 기능 + 사용자 기능 + 배포 (Phase 6) → 실제 B2C 접속 가능 |
+  | `v3.2-ai` | 예정 | AI 엔지니어링 레이어 (Phase 7) |
+  | `v3.3-…` | 예정 | 확장 기능 (Phase 8, 기능 묶음마다 마이너 버전) |
+  | `v4.0-housing-types` | 예정 | 아파트 외 주택 유형 확장 (Phase 9) |
+
+  번호 규칙: **메이저 = 시스템이 바뀔 때** (v1 노트북 1차 → v2 V2 Feature · 모델 → v3 서비스 → v4 주택 유형),
+  **마이너 = Phase 안의 단계 완료**, 패치(`v2.1.1`) = 이미 태그한 결과의 수정.
 
   이미 푸시한 태그는 옮기지 않는다. 결과를 고치면 새 태그(`v2.1.1-…`)를 붙인다.
 - CI: GitHub Actions에서 변경된 경로(`backend/core-service/**` 등)의 서비스만 테스트·빌드
