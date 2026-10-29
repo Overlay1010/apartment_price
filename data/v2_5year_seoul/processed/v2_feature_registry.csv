@@ -18,9 +18,7 @@ v2_trade,월_sin,model,V1,고정(위치·물리) 또는 계약일,Float64,0.0,Fa
 v2_trade,월_cos,model,V1,고정(위치·물리) 또는 계약일,Float64,0.0,False
 v2_trade,위도,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
 v2_trade,경도,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
-v2_trade,유치원거리_m,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
-v2_trade,응급의료기관거리_m,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
-v2_trade,주요일자리거리_m,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,응급의료기관거리_m,ablation,V1(현재 목록),현재 지정 목록 — 과거 시점 미반영 (ablation),float64,0.0,False
 v2_trade,거래유형,model,V1,고정(위치·물리) 또는 계약일,object,0.0581,False
 v2_trade,토지임대부아파트여부,model,V1,고정(위치·물리) 또는 계약일,object,0.0,False
 v2_trade,건축년도,meta,key/meta,-,int64,0.0,False
@@ -69,6 +67,8 @@ v2_trade,대규모점포거리_m_v1,v1_compare,V1,고정(위치·물리) 또는 
 v2_trade,초등학교거리_m_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
 v2_trade,중학교거리_m_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
 v2_trade,고등학교거리_m_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,유치원거리_m_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_trade,주요일자리거리_m_v1,v1_compare,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
 v2_trade,구_확정월_중위가격,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
 v2_trade,구_확정월_중위평당가,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
 v2_trade,구_확정월_거래량,model,06_market(확정월),m-2월까지 실거래,float64,0.0,False
@@ -110,8 +110,11 @@ v2_trade,주담대금리_6개월변화_최근공표,model,06_rate,"기준금리 
 v2_trade,전세대출금리_최근공표,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0,False
 v2_trade,전세대출금리_3개월변화_최근공표,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0,False
 v2_trade,전세대출금리_6개월변화_최근공표,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.02,False
-v2_trade,역세권거리_m,model,06_location(시점),"역 개통일 ≤ 계약일, 점포 계약월 1일 영업",float64,0.0,False
-v2_trade,대규모점포거리_m,model,06_location(시점),"역 개통일 ≤ 계약일, 점포 계약월 1일 영업",float64,0.0,False
+v2_trade,역세권거리_m,model,06_location(시점),"역·출입구 개통일 ≤ 계약일, 점포 계약월 1일 영업, 주요 일자리 분기 시작+5개월 ≤ 계약일, 유치원 개원일 ≤ 계약일",float64,0.0,False
+v2_trade,대규모점포거리_m,model,06_location(시점),"역·출입구 개통일 ≤ 계약일, 점포 계약월 1일 영업, 주요 일자리 분기 시작+5개월 ≤ 계약일, 유치원 개원일 ≤ 계약일",float64,0.0,False
+v2_trade,역출입구거리_m,model,06_location(시점),"역·출입구 개통일 ≤ 계약일, 점포 계약월 1일 영업, 주요 일자리 분기 시작+5개월 ≤ 계약일, 유치원 개원일 ≤ 계약일",float64,0.0,False
+v2_trade,주요일자리거리_m,model,06_location(시점),"역·출입구 개통일 ≤ 계약일, 점포 계약월 1일 영업, 주요 일자리 분기 시작+5개월 ≤ 계약일, 유치원 개원일 ≤ 계약일",float64,0.0,False
+v2_trade,유치원거리_m,ablation,06_location(시점),"역·출입구 개통일 ≤ 계약일, 점포 계약월 1일 영업, 주요 일자리 분기 시작+5개월 ≤ 계약일, 유치원 개원일 ≤ 계약일",float64,0.0,False
 v2_trade,학교기준연도,meta,key/meta,-,int64,0.0,False
 v2_trade,최근접초_학교명,display,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",object,0.0,False
 v2_trade,최근접초_거리_m,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0,False
@@ -421,9 +424,7 @@ v2_complex,법정동,meta,key/meta,-,object,0.0,False
 v2_complex,건축년도,meta,key/meta,-,int64,0.0,False
 v2_complex,위도,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
 v2_complex,경도,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
-v2_complex,유치원거리_m,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
-v2_complex,응급의료기관거리_m,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
-v2_complex,주요일자리거리_m,model,V1,고정(위치·물리) 또는 계약일,float64,0.0,False
+v2_complex,응급의료기관거리_m,ablation,V1(현재 목록),현재 지정 목록 — 과거 시점 미반영 (ablation),float64,0.0,False
 v2_complex,거래건수_학습기간,meta,key/meta,-,int64,0.0,False
 v2_complex,첫거래월,meta,key/meta,-,datetime64[ns],0.0,False
 v2_complex,마지막거래월,meta,key/meta,-,datetime64[ns],0.0,False
@@ -443,10 +444,16 @@ v2_complex,전용_IQR,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고�
 v2_complex,소형60이하_비중,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",Float64,0.0038,False
 v2_complex,대형85초과_비중,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",Float64,0.0038,False
 v2_complex,공시_호수_최근,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",Int64,0.0038,False
-v2_complex,역세권거리_m_학습기준,model,06_location(시점),"역 개통일 ≤ 계약일, 점포 계약월 1일 영업",float64,0.0,False
-v2_complex,대규모점포거리_m_학습기준,model,06_location(시점),"역 개통일 ≤ 계약일, 점포 계약월 1일 영업",float64,0.0,False
-v2_complex,역세권거리_m_최신,display,06_location(시점),"역 개통일 ≤ 계약일, 점포 계약월 1일 영업",float64,0.0,False
-v2_complex,대규모점포거리_m_최신,display,06_location(시점),"역 개통일 ≤ 계약일, 점포 계약월 1일 영업",float64,0.0,False
+v2_complex,역세권거리_m_학습기준,model,06_location(시점),"역·출입구 개통일 ≤ 계약일, 점포 계약월 1일 영업, 주요 일자리 분기 시작+5개월 ≤ 계약일, 유치원 개원일 ≤ 계약일",float64,0.0,False
+v2_complex,역출입구거리_m_학습기준,model,06_location(시점),"역·출입구 개통일 ≤ 계약일, 점포 계약월 1일 영업, 주요 일자리 분기 시작+5개월 ≤ 계약일, 유치원 개원일 ≤ 계약일",float64,0.0,False
+v2_complex,주요일자리거리_m_학습기준,model,06_location(시점),"역·출입구 개통일 ≤ 계약일, 점포 계약월 1일 영업, 주요 일자리 분기 시작+5개월 ≤ 계약일, 유치원 개원일 ≤ 계약일",float64,0.0,False
+v2_complex,유치원거리_m_학습기준,ablation,06_location(시점),"역·출입구 개통일 ≤ 계약일, 점포 계약월 1일 영업, 주요 일자리 분기 시작+5개월 ≤ 계약일, 유치원 개원일 ≤ 계약일",float64,0.0,False
+v2_complex,대규모점포거리_m_학습기준,model,06_location(시점),"역·출입구 개통일 ≤ 계약일, 점포 계약월 1일 영업, 주요 일자리 분기 시작+5개월 ≤ 계약일, 유치원 개원일 ≤ 계약일",float64,0.0,False
+v2_complex,역세권거리_m_최신,display,06_location(시점),"역·출입구 개통일 ≤ 계약일, 점포 계약월 1일 영업, 주요 일자리 분기 시작+5개월 ≤ 계약일, 유치원 개원일 ≤ 계약일",float64,0.0,False
+v2_complex,역출입구거리_m_최신,display,06_location(시점),"역·출입구 개통일 ≤ 계약일, 점포 계약월 1일 영업, 주요 일자리 분기 시작+5개월 ≤ 계약일, 유치원 개원일 ≤ 계약일",float64,0.0,False
+v2_complex,주요일자리거리_m_최신,display,06_location(시점),"역·출입구 개통일 ≤ 계약일, 점포 계약월 1일 영업, 주요 일자리 분기 시작+5개월 ≤ 계약일, 유치원 개원일 ≤ 계약일",float64,0.0,False
+v2_complex,유치원거리_m_최신,display,06_location(시점),"역·출입구 개통일 ≤ 계약일, 점포 계약월 1일 영업, 주요 일자리 분기 시작+5개월 ≤ 계약일, 유치원 개원일 ≤ 계약일",float64,0.0,False
+v2_complex,대규모점포거리_m_최신,display,06_location(시점),"역·출입구 개통일 ≤ 계약일, 점포 계약월 1일 영업, 주요 일자리 분기 시작+5개월 ≤ 계약일, 유치원 개원일 ≤ 계약일",float64,0.0,False
 v2_complex,최근접초_학교명,display,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",object,0.0,False
 v2_complex,최근접초_거리_m,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0,False
 v2_complex,최근접초_학생수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",int64,0.0,False

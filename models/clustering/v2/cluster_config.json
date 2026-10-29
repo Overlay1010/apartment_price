@@ -1,0 +1,50 @@
+{
+  "version": "v2",
+  "train_complexes": "첫거래월 < 2026-01 (7,581)",
+  "main_complexes": "세대수 >= 150",
+  "train_snapshot": "v2_complex _학습기준 (2025-07-01)",
+  "display_snapshot": "v2_complex _최신 (2026-07-01)",
+  "price_used": false,
+  "user_tags": "규칙 태그 (tag_rules.json, complex_tags.parquet)",
+  "analysis_clusters": {
+    "location": {
+      "label": "입지",
+      "k": 3,
+      "features": [
+        "역세권거리_m",
+        "주요일자리거리_m"
+      ],
+      "names": {
+        "1": "직주근접 도심형",
+        "2": "역 인접 생활주거형",
+        "0": "일반 주거형"
+      },
+      "silhouette": 0.3604
+    },
+    "education": {
+      "label": "교육",
+      "k": 5,
+      "features": [
+        "최근접초_거리_m",
+        "반경1km_입시교과학원수",
+        "최근접학원가_거리_m"
+      ],
+      "names": {
+        "4": "학원가 핵심형",
+        "3": "초등학교 인접형",
+        "2": "학원가 인접형",
+        "1": "동네 학원 밀집형",
+        "0": "교육시설 보통형"
+      },
+      "silhouette": 0.2859
+    }
+  },
+  "housing_kmeans": "폐기 (주요 단지 Silhouette 0.1 안팎, housing_cluster_diagnosis.csv)",
+  "knn": {
+    "neighbors": 5,
+    "default_scope": "같은 구",
+    "alternative_scope": "서울 전체 (조건 유사, 가격 다를 수 있음)",
+    "space": "입지 · 주택 · 교육 Feature 축별 표준화 / sqrt(축 Feature 수)"
+  },
+  "regression_handoff": "trade_clusters.parquet (입지 · 교육 KMeans, 거래 시점 배정) → 11 Ablation 후보"
+}
