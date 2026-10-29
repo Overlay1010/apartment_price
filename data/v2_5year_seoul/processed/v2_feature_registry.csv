@@ -113,41 +113,41 @@ v2_trade,전세대출금리_6개월변화_최근공표,model,06_rate,"기준금�
 v2_trade,역세권거리_m,model,06_location(시점),"역 개통일 ≤ 계약일, 점포 계약월 1일 영업",float64,0.0,False
 v2_trade,대규모점포거리_m,model,06_location(시점),"역 개통일 ≤ 계약일, 점포 계약월 1일 영업",float64,0.0,False
 v2_trade,학교기준연도,meta,key/meta,-,int64,0.0,False
-v2_trade,최근접초_학교명,display,02_school,6월 이후 당해연도 학교 통계,object,0.0,False
-v2_trade,최근접초_거리_m,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
-v2_trade,최근접초_학생수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
-v2_trade,최근접초_학급당학생수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
-v2_trade,최근접초_교원1인당학생수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
-v2_trade,최근접초_학생수증감률,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0994,False
-v2_trade,최근접초_학생순전입률,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0014,False
-v2_trade,최근접초_학생1인당_교수학습공간,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0036,False
-v2_trade,최근접초_학생1인당_체육장면적,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0409,False
-v2_trade,최근접초_교사동_평균경과년수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0036,False
-v2_trade,최근접중_학교명,display,02_school,6월 이후 당해연도 학교 통계,object,0.0,False
-v2_trade,최근접중_거리_m,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
-v2_trade,최근접중_학생수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
-v2_trade,최근접중_학급당학생수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
-v2_trade,최근접중_교원1인당학생수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
-v2_trade,최근접중_학생수증감률,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0992,False
-v2_trade,최근접중_학생순전입률,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0014,False
-v2_trade,최근접중_학생1인당_교수학습공간,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0044,False
-v2_trade,최근접중_학생1인당_체육장면적,model,02_school,6월 이후 당해연도 학교 통계,float64,0.192,False
-v2_trade,최근접중_교사동_평균경과년수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0125,False
-v2_trade,반경500m_초등학교수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
-v2_trade,반경1km_중학교수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
-v2_trade,반경1km_고등학교수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
-v2_trade,반경1km_초등학생수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
-v2_trade,반경1km_초등순전입률,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0007,False
+v2_trade,최근접초_학교명,display,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",object,0.0,False
+v2_trade,최근접초_거리_m,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0,False
+v2_trade,최근접초_학생수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",int64,0.0,False
+v2_trade,최근접초_학급당학생수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0,False
+v2_trade,최근접초_교원1인당학생수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0,False
+v2_trade,최근접초_학생수증감률,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0994,False
+v2_trade,최근접초_학생순전입률,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0014,False
+v2_trade,최근접초_학생1인당_교수학습공간,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0036,False
+v2_trade,최근접초_학생1인당_체육장면적,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0409,False
+v2_trade,최근접초_교사동_평균경과년수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0036,False
+v2_trade,최근접중_학교명,display,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",object,0.0,False
+v2_trade,최근접중_거리_m,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0,False
+v2_trade,최근접중_학생수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",int64,0.0,False
+v2_trade,최근접중_학급당학생수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0,False
+v2_trade,최근접중_교원1인당학생수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0,False
+v2_trade,최근접중_학생수증감률,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0992,False
+v2_trade,최근접중_학생순전입률,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0014,False
+v2_trade,최근접중_학생1인당_교수학습공간,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0044,False
+v2_trade,최근접중_학생1인당_체육장면적,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.192,False
+v2_trade,최근접중_교사동_평균경과년수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0125,False
+v2_trade,반경500m_초등학교수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",int64,0.0,False
+v2_trade,반경1km_중학교수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",int64,0.0,False
+v2_trade,반경1km_고등학교수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",int64,0.0,False
+v2_trade,반경1km_초등학생수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",int64,0.0,False
+v2_trade,반경1km_초등순전입률,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0007,False
 v2_trade,학원스냅샷기준월,meta,key/meta,-,object,0.0,False
 v2_trade,학원스냅샷_경과개월,meta,key/meta,-,int64,0.0,False
-v2_trade,반경500m_입시교과학원수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
-v2_trade,반경1km_입시교과학원수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
-v2_trade,반경1km_예체능학원수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
-v2_trade,반경1km_외국어학원수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
-v2_trade,최근접학원가_거리_m,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
-v2_trade,최근접3대학원가_거리_m,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
-v2_trade,최근접학원가명,display,02_school,6월 이후 당해연도 학교 통계,object,0.0,False
-v2_trade,최근접3대학원가명,display,02_school,6월 이후 당해연도 학교 통계,object,0.0,False
+v2_trade,반경500m_입시교과학원수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",int64,0.0,False
+v2_trade,반경1km_입시교과학원수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",int64,0.0,False
+v2_trade,반경1km_예체능학원수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",int64,0.0,False
+v2_trade,반경1km_외국어학원수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",int64,0.0,False
+v2_trade,최근접학원가_거리_m,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0,False
+v2_trade,최근접3대학원가_거리_m,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0,False
+v2_trade,최근접학원가명,display,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",object,0.0,False
+v2_trade,최근접3대학원가명,display,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",object,0.0,False
 v2_trade,투기과열지구_계약일,model,03_policy_trade,발표 < 계약일,int64,0.0,False
 v2_trade,조정대상지역_계약일,model,03_policy_trade,발표 < 계약일,int64,0.0,False
 v2_trade,토허_구전역_계약일,model,03_policy_trade,발표 < 계약일,int64,0.0,False
@@ -158,7 +158,7 @@ v2_trade,주담대_LTV_적용,model,03_policy_trade,발표 < 계약일,int64,0.0
 v2_trade,고가주택_주담대금지_해당,model,03_policy_trade,발표 < 계약일,int64,0.0,False
 v2_trade,주담대_최대한도_만원,model,03_policy_trade,발표 < 계약일,float64,0.0217,False
 v2_trade,주담대_한도비율,model,03_policy_trade,발표 < 계약일,float64,0.0217,False
-v2_trade,토허_근거,display,03_policy_trade,발표 < 계약일,object,0.7383,False
+v2_trade,토허_근거,display,03_policy_trade,발표 < 계약일,object,0.7379,False
 v2_trade,예상가격_만원,model,03_policy_trade,발표 < 계약일,float64,0.0217,False
 v2_trade,예상가격_출처,ablation,03_policy_trade,발표 < 계약일,object,0.0,False
 v2_trade,공시연도,meta,key/meta,-,int32,0.0,False
@@ -447,31 +447,43 @@ v2_complex,역세권거리_m_학습기준,model,06_location(시점),"역 개통�
 v2_complex,대규모점포거리_m_학습기준,model,06_location(시점),"역 개통일 ≤ 계약일, 점포 계약월 1일 영업",float64,0.0,False
 v2_complex,역세권거리_m_최신,display,06_location(시점),"역 개통일 ≤ 계약일, 점포 계약월 1일 영업",float64,0.0,False
 v2_complex,대규모점포거리_m_최신,display,06_location(시점),"역 개통일 ≤ 계약일, 점포 계약월 1일 영업",float64,0.0,False
-v2_complex,최근접초_학교명,display,02_school,6월 이후 당해연도 학교 통계,object,0.0,False
-v2_complex,최근접초_거리_m,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
-v2_complex,최근접초_학생수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
-v2_complex,최근접초_학급당학생수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
-v2_complex,최근접초_교원1인당학생수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
-v2_complex,최근접초_학생수증감률,model,02_school,6월 이후 당해연도 학교 통계,float64,0.003,False
-v2_complex,최근접초_학생순전입률,model,02_school,6월 이후 당해연도 학교 통계,float64,0.003,False
-v2_complex,최근접초_학생1인당_교수학습공간,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0023,False
-v2_complex,최근접초_학생1인당_체육장면적,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0327,False
-v2_complex,최근접초_교사동_평균경과년수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0023,False
-v2_complex,최근접중_학교명,display,02_school,6월 이후 당해연도 학교 통계,object,0.0,False
-v2_complex,최근접중_거리_m,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
-v2_complex,최근접중_학생수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
-v2_complex,최근접중_학급당학생수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
-v2_complex,최근접중_교원1인당학생수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
-v2_complex,최근접중_학생수증감률,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
-v2_complex,최근접중_학생순전입률,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0,False
-v2_complex,최근접중_학생1인당_교수학습공간,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0024,False
-v2_complex,최근접중_학생1인당_체육장면적,model,02_school,6월 이후 당해연도 학교 통계,float64,0.1894,False
-v2_complex,최근접중_교사동_평균경과년수,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0095,False
-v2_complex,반경500m_초등학교수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
-v2_complex,반경1km_중학교수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
-v2_complex,반경1km_고등학교수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
-v2_complex,반경1km_초등학생수,model,02_school,6월 이후 당해연도 학교 통계,int64,0.0,False
-v2_complex,반경1km_초등순전입률,model,02_school,6월 이후 당해연도 학교 통계,float64,0.0023,False
+v2_complex,최근접초_학교명,display,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",object,0.0,False
+v2_complex,최근접초_거리_m,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0,False
+v2_complex,최근접초_학생수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",int64,0.0,False
+v2_complex,최근접초_학급당학생수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0,False
+v2_complex,최근접초_교원1인당학생수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0,False
+v2_complex,최근접초_학생수증감률,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.003,False
+v2_complex,최근접초_학생순전입률,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.003,False
+v2_complex,최근접초_학생1인당_교수학습공간,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0023,False
+v2_complex,최근접초_학생1인당_체육장면적,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0327,False
+v2_complex,최근접초_교사동_평균경과년수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0023,False
+v2_complex,최근접중_학교명,display,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",object,0.0,False
+v2_complex,최근접중_거리_m,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0,False
+v2_complex,최근접중_학생수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",int64,0.0,False
+v2_complex,최근접중_학급당학생수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0,False
+v2_complex,최근접중_교원1인당학생수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0,False
+v2_complex,최근접중_학생수증감률,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0,False
+v2_complex,최근접중_학생순전입률,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0,False
+v2_complex,최근접중_학생1인당_교수학습공간,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0024,False
+v2_complex,최근접중_학생1인당_체육장면적,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.1894,False
+v2_complex,최근접중_교사동_평균경과년수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0095,False
+v2_complex,반경500m_초등학교수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",int64,0.0,False
+v2_complex,반경1km_중학교수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",int64,0.0,False
+v2_complex,반경1km_고등학교수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",int64,0.0,False
+v2_complex,반경1km_초등학생수,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",int64,0.0,False
+v2_complex,반경1km_초등순전입률,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0023,False
+v2_complex,최근접학원가_거리_m,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0,False
+v2_complex,최근접3대학원가_거리_m,model,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",float64,0.0,False
+v2_complex,최근접학원가명,display,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",object,0.0,False
+v2_complex,최근접3대학원가명,display,02_school,"6월 이후 당해연도 학교 통계, 학원 스냅샷 기준월+3개월",object,0.0,False
+v2_complex,반경500m_입시교과학원수_학습기준,model,02c_academy(시점),상가정보 기준월 + 3개월 ≤ 기준일 (정상 스냅샷),int64,0.0,False
+v2_complex,반경1km_입시교과학원수_학습기준,model,02c_academy(시점),상가정보 기준월 + 3개월 ≤ 기준일 (정상 스냅샷),int64,0.0,False
+v2_complex,반경1km_예체능학원수_학습기준,model,02c_academy(시점),상가정보 기준월 + 3개월 ≤ 기준일 (정상 스냅샷),int64,0.0,False
+v2_complex,반경1km_외국어학원수_학습기준,model,02c_academy(시점),상가정보 기준월 + 3개월 ≤ 기준일 (정상 스냅샷),int64,0.0,False
+v2_complex,반경500m_입시교과학원수_최신,display,02c_academy(시점),상가정보 기준월 + 3개월 ≤ 기준일 (정상 스냅샷),int64,0.0,False
+v2_complex,반경1km_입시교과학원수_최신,display,02c_academy(시점),상가정보 기준월 + 3개월 ≤ 기준일 (정상 스냅샷),int64,0.0,False
+v2_complex,반경1km_예체능학원수_최신,display,02c_academy(시점),상가정보 기준월 + 3개월 ≤ 기준일 (정상 스냅샷),int64,0.0,False
+v2_complex,반경1km_외국어학원수_최신,display,02c_academy(시점),상가정보 기준월 + 3개월 ≤ 기준일 (정상 스냅샷),int64,0.0,False
 v2_complex,공시_m2당_학습기준,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0215,False
 v2_complex,공시_전년대비_학습기준,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0327,False
 v2_complex,공시_m2당_최신,display,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0103,False
