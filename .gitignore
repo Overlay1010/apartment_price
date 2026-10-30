@@ -20,3 +20,10 @@ data/external/building_register_title_seoul_*.parquet
 data/external/building_register_recap_raw/
 # 공시가격 서울 아파트 호 단위 원본 (약 63MB) — 노트북 집계 결과만 커밋
 data/external/official_price/apt_official_price_seoul_*.parquet
+
+# 11 회귀 실험 중간 예측 (npy, 재생성 가능) — 결과 CSV와 OOF parquet만 커밋
+notebook/v2_5year_notebook/model/regression/v2_experiments/r11_preds/
+notebook/v2_5year_notebook/model/regression/v2_experiments/r11_roll/
+notebook/v2_5year_notebook/model/regression/v2_experiments/*.npy
+notebook/v2_5year_notebook/model/regression/v2_experiments/r11_oof.parquet
+notebook/v2_5year_notebook/model/regression/v2_experiments/r11_interval_test.parquet

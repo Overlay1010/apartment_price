@@ -1,0 +1,58 @@
+{
+ "rolling_monthly": {
+  "Valid": {
+   "중개거래": {
+    "n": 32193,
+    "MAPE": 5.696,
+    "편향": -1.857
+   },
+   "직거래": {
+    "n": 1595,
+    "MAPE": 13.371,
+    "편향": 3.13
+   }
+  },
+  "Test": {
+   "중개거래": {
+    "n": 37923,
+    "MAPE": 6.523,
+    "편향": -3.213
+   },
+   "직거래": {
+    "n": 1646,
+    "MAPE": 12.54,
+    "편향": 1.041
+   }
+  }
+ },
+ "rolling_overall": {
+  "Test": {
+   "n": 39569,
+   "MAPE": 6.773,
+   "편향": -3.036
+  },
+  "Valid": {
+   "n": 33788,
+   "MAPE": 6.058,
+   "편향": -1.621
+  }
+ },
+ "fixed_split": {
+  "Valid_MAPE": 6.16,
+  "Test_MAPE": 9.637,
+  "Test_MAPE_TrainValid_refit": 8.052
+ },
+ "naive_rule": {
+  "Valid_MAPE": 13.449,
+  "Test_MAPE": 14.937
+ },
+ "same_protocol_v1_vs_v2_test": {
+  "V1": 13.26,
+  "V2": 9.92
+ },
+ "interval_test": {
+  "coverage_existing_pct": 83.32,
+  "width_existing_pct": 20.44,
+  "coverage_new_pct": 71.99
+ }
+}

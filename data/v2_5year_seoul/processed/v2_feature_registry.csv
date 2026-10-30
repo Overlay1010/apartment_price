@@ -159,11 +159,12 @@ v2_trade,토허_동노출,model,03_policy_trade,발표 < 계약일,int64,0.0,Fal
 v2_trade,토허_단지지정,model,03_policy_trade,발표 < 계약일,int64,0.0,False
 v2_trade,주담대_LTV_적용,model,03_policy_trade,발표 < 계약일,int64,0.0,False
 v2_trade,고가주택_주담대금지_해당,model,03_policy_trade,발표 < 계약일,int64,0.0,False
-v2_trade,주담대_최대한도_만원,model,03_policy_trade,발표 < 계약일,float64,0.0217,False
-v2_trade,주담대_한도비율,model,03_policy_trade,발표 < 계약일,float64,0.0217,False
+v2_trade,주담대_최대한도_만원,ablation,03_policy_trade,발표 < 계약일,float64,0.0217,False
+v2_trade,주담대_한도비율,ablation,03_policy_trade,발표 < 계약일,float64,0.0217,False
 v2_trade,토허_근거,display,03_policy_trade,발표 < 계약일,object,0.7379,False
-v2_trade,예상가격_만원,model,03_policy_trade,발표 < 계약일,float64,0.0217,False
+v2_trade,예상가격_만원,ablation,03_policy_trade,발표 < 계약일,float64,0.0217,False
 v2_trade,예상가격_출처,ablation,03_policy_trade,발표 < 계약일,object,0.0,False
+v2_trade,예상가격_단지만,model,03_policy_trade,발표 < 계약일,float64,0.0964,False
 v2_trade,공시연도,meta,key/meta,-,int32,0.0,False
 v2_trade,공시_m2당_단지,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0289,False
 v2_trade,공시_m2당_면적대,model,05b_complex,"공시 Y년 → Y년 7월, 정비 고시일 < 계약일, 대장은 고정 속성",float64,0.0289,False

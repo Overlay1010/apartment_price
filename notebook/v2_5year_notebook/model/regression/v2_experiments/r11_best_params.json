@@ -1,0 +1,29 @@
+{
+ "xgb": {
+  "max_depth": 12,
+  "min_child_weight": 31.742177483769634,
+  "subsample": 0.6662357438035773,
+  "colsample_bytree": 0.9641507700604032,
+  "reg_lambda": 0.08221832913402648,
+  "reg_alpha": 0.19721690639475783,
+  "max_cat_to_onehot": 15
+ },
+ "lgb": {
+  "num_leaves": 451,
+  "min_child_samples": 12,
+  "colsample_bytree": 0.7268667382517547,
+  "subsample": 0.9648682390881465,
+  "reg_lambda": 0.03963700922832873,
+  "reg_alpha": 0.45659408478817315,
+  "cat_smooth": 65.52911519057434,
+  "max_bin": 511
+ },
+ "cat": {
+  "depth": 8,
+  "l2_leaf_reg": 32.74127435518369,
+  "random_strength": 4.33744643345235,
+  "bagging_temperature": 0.3834415188257777,
+  "rsm": 0.8542075266578653,
+  "one_hot_max_size": 8
+ }
+}
