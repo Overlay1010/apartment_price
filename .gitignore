@@ -27,3 +27,7 @@ notebook/v2_5year_notebook/model/regression/v2_experiments/r11_roll/
 notebook/v2_5year_notebook/model/regression/v2_experiments/*.npy
 notebook/v2_5year_notebook/model/regression/v2_experiments/r11_oof.parquet
 notebook/v2_5year_notebook/model/regression/v2_experiments/r11_interval_test.parquet
+notebook/v2_5year_notebook/model/regression/v2_experiments/r11_roll2/
+notebook/v2_5year_notebook/model/regression/v2_experiments/r11_oof2.parquet
+notebook/v2_5year_notebook/model/regression/v2_experiments/r11_interval_test2.parquet
+notebook/v2_5year_notebook/model/regression/v2_experiments/lt_feat.parquet

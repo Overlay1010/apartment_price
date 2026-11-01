@@ -278,6 +278,11 @@ v2_trade,분양공고세대_12m_재고천호당,model,06_supply_ratio,"공급 M+
 v2_trade,입주예정_공고기준_24m_재고천호당,model,06_supply_ratio,"공급 M+2, 재고 t년 → t+1년 8월",float64,0.0,False
 v2_trade,미분양_구_재고천호당,model,06_supply_ratio,"공급 M+2, 재고 t년 → t+1년 8월",float64,0.0,False
 v2_trade,준공후미분양_구_재고천호당,model,06_supply_ratio,"공급 M+2, 재고 t년 → t+1년 8월",float64,0.0,False
+v2_trade,직전거래가_동일면적,model,06_last_trade,계약일 30일 전까지 계약된 같은 단지 · 면적 중개거래,float64,0.0481,False
+v2_trade,직전3건중위_동일면적,model,06_last_trade,계약일 30일 전까지 계약된 같은 단지 · 면적 중개거래,float64,0.0481,False
+v2_trade,직전거래_경과일,model,06_last_trade,계약일 30일 전까지 계약된 같은 단지 · 면적 중개거래,float64,0.0481,False
+v2_trade,직전거래_층,model,06_last_trade,계약일 30일 전까지 계약된 같은 단지 · 면적 중개거래,float64,0.0481,False
+v2_trade,동일면적_누적거래수,model,06_last_trade,계약일 30일 전까지 계약된 같은 단지 · 면적 중개거래,float64,0.0481,False
 v2_region_month,자치구,key,key/meta,-,object,0.0,False
 v2_region_month,예측시점,meta,key/meta,-,datetime64[ns],0.0,False
 v2_region_month,향후3개월_변화율,target,target,-,float64,0.0333,False

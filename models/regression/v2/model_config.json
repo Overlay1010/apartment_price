@@ -2,16 +2,16 @@
  "model": "LightGBM",
  "target": "log(거래금액)",
  "params": {
-  "num_leaves": 451,
-  "min_child_samples": 12,
-  "colsample_bytree": 0.7268667382517547,
-  "subsample": 0.9648682390881465,
-  "reg_lambda": 0.03963700922832873,
-  "reg_alpha": 0.45659408478817315,
-  "cat_smooth": 65.52911519057434,
-  "max_bin": 511,
+  "num_leaves": 72,
+  "min_child_samples": 24,
+  "colsample_bytree": 0.4322311163924917,
+  "subsample": 0.9944803483540686,
+  "reg_lambda": 46.27272675640742,
+  "reg_alpha": 0.010095396757182767,
+  "cat_smooth": 16.406899587916314,
+  "max_bin": 255,
   "learning_rate": 0.03,
-  "n_estimators": 3100,
+  "n_estimators": 4290,
   "bagging_freq": 1,
   "random_state": 42,
   "n_jobs": 8,
@@ -211,7 +211,12 @@
   "분양공고세대_12m_재고천호당",
   "입주예정_공고기준_24m_재고천호당",
   "미분양_구_재고천호당",
-  "준공후미분양_구_재고천호당"
+  "준공후미분양_구_재고천호당",
+  "직전거래가_동일면적",
+  "직전3건중위_동일면적",
+  "직전거래_경과일",
+  "직전거래_층",
+  "동일면적_누적거래수"
  ],
  "categorical": [
   "거래유형",
@@ -229,7 +234,7 @@
  "interval": {
   "method": "OOF 잔차 분위수, 이동 창",
   "window_months": 3,
-  "alpha": 0.07,
+  "alpha": 0.08,
   "segments": [
    "단지",
    "가격대"
@@ -247,5 +252,5 @@
   "rule": "구간 밖 초과분이 해당 방향 반폭 이하 → 다소, 초과 → 고/저평가",
   "new_complex": "등급 없음(참고용)"
  },
- "retrain": "매달 (m-2월까지 확정 거래), 반복 3,100회 고정"
+ "retrain": "매달 (m-2월까지 확정 거래), 반복 4290회 고정"
 }
