@@ -19,10 +19,21 @@
 | 12 | `r11_tune2.py` | `r11_optuna.db` (`r11_lgb_lasttrade`) | 보완 후 LightGBM 재탐색 30회 |
 | 13 | `r11_rolling2.py` | `r11_best_params_lasttrade.json` (+ `r11_roll2/*.npy`, 커밋 안 함) | 보완 후 매달 재학습 평가 2022-01~2026-06 (반복 4,290회) |
 | 14 | `r11_interval4.py`, `r11_compare_lasttrade.py` | `r11_interval_grid2.csv`, `r11_lasttrade_compare.csv` | 보완 후 오차 범위, 직전 거래가 기준선 비교 |
+| 15 | `r11_sg_build.py`, `r11_sg_test.py`, `r11_sg_test2.py` | `sg_feat.parquet`, `r11_sg_test*.csv` | **보완 2 후보:** 단지 주변 상권 규모 7개 (소상공인 상가정보, 02c와 같은 스냅샷 시점 규칙) |
+| 16 | `r11_hakgu_build.py`, `r11_hakgu_test.py` | `hakgu_feat.parquet`, `r11_hakgu_test.csv` | 후보: 학구도 배정 초등학교 8개 (`data/external/schoolzone`, 거래의 23%는 배정 학교 ≠ 최근접 학교) |
+| 17 | `r11_kapt_build.py`, `r11_kapt_test.py` | `kapt_feat.parquet`, `r11_kapt_test.csv` | 후보: K-apt 단지 속성 7개 (`05c_collect_kapt.py`, 지번 → 도로명 순으로 연결, 거래 85%) |
+| 18 | `r11_noise_check.py` | `r11_noise_check.csv` | 15~17 점검이 학습률 0.06 + 평가 구간 조기 종료(트리 360~400개)라 시드만 바꿔도 f1 0.4%p · 홀드아웃 0.9%p가 흔들림, 난수 열 7개도 같은 "개선" → 15~17 판정 무효 |
+| 19 | `r11_idx_build.py`, `r11_eval_fixed.py` | `idx_feat.parquet`, `r11_eval_fixed.csv` | 본 모델 설정(학습률 0.03, 트리 3,734개 고정, 조기 종료 없음) × 시드 2개로 재비교. 상권 · 배정초 · K-apt 불채택, **직전 거래가 시세 보정 2개 채택** (f1 5.60 → 5.31, f2 4.99 → 4.84, 홀드아웃 5.13 → 4.96%) → 06에 반영 |
+| 20 | `r11_rolling3.py`, `r11_compare_idx.py` | `r11_best_params_idx.json`, `r11_idx_compare.csv`, `r11_idx_by_half.csv` (+ `r11_roll3/*.npy`, 커밋 안 함) | 보완 2 매달 재학습 평가 2022-01~2026-06 (반복 2,080회), v2.2 · 단순 기준선 비교 → 중개 Valid 4.95 → 4.86, Test 5.53 → 5.35% |
 
 보완 후 `r11_interval4.py`가 만든 `r11_oof2.parquet`(매달 재학습 OOF 예측)를 `models/regression/v2/oof_predictions.parquet`로 복사해 커밋했고 (보완 전 OOF는 커밋하지 않음), 노트북은 그 파일을 읽는다.
+보완 2부터는 `r11_rolling3.py`가 만든 `r11_oof3.parquet`를 같은 위치로 복사했다.
+비교용 v2.2 OOF(`r11_oof2.parquet`, 커밋 안 함)는 `git show v2.2-regression:models/regression/v2/oof_predictions.parquet > r11_oof2.parquet`로 복원한다.
+15~19단계 후보 Feature parquet(`sg_feat` · `hakgu_feat` · `kapt_feat` · `idx_feat`)도 커밋하지 않고 `r11_*_build.py`로 다시 만든다.
+
+- **Feature 추가 실험은 본 모델 설정 그대로 돌린다** (`r11_eval_fixed.py`, 결과 CSV에 이어 쓰기). 평가 구간으로 조기 종료하지 않고, 시드 간 차이가 채택 기준(0.1%p)보다 충분히 작은지 먼저 본다.
 
 - 실행 위치는 이 폴더다 (`r11_route.py`, `r11_v1cmp.py`는 상대 경로로 다른 스크립트를 읽는다).
 - 1~5단계는 06 패치 전 레지스트리(기본 Feature 196개)에서 돌았다. `r11_stage1.py`의 `assert`는 그 시점 레지스트리를 확인한다.
-  6~10단계는 06에 반영된 레지스트리(194개, `예상가격_단지만` 포함), 11단계 보완부터는 직전 거래 Feature 5개를 더한 199개를 쓴다.
+  6~10단계는 06에 반영된 레지스트리(194개, `예상가격_단지만` 포함), 11~19단계는 직전 거래 Feature 5개를 더한 199개, 20단계부터는 시세 보정 2개를 더한 201개를 쓴다.
 - `r11_v1cmp.csv`는 `r11_v1cmp.py` 실행 출력을 옮겨 적은 값이다.

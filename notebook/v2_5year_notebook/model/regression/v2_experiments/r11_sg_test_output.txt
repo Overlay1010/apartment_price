@@ -1,0 +1,18 @@
+C:\Users\UK\Apartment price\apart_venv\Lib\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+C:\Users\UK\Apartment price\apart_venv\Lib\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+C:\Users\UK\Apartment price\apart_venv\Lib\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+C:\Users\UK\Apartment price\apart_venv\Lib\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+{'구성': '현재 11 (199)', 'Valid 전체 MAPE': np.float64(5.0228484540184155), 'Valid 전체 n': 32193, 'Valid 기존 단지 MAPE': np.float64(4.958119860115174), 'Valid 기존 단지 n': 31865, 'Valid 처음 보는 단지 MAPE': np.float64(11.311191883063476), 'Valid 처음 보는 단지 n': 328, '홀드아웃 단지 MAPE': np.float64(5.882447948314801), '홀드아웃 단지 10%이내': np.float64(83.12286447662342), '홀드아웃 회차별': [np.float64(6.008), np.float64(5.803), np.float64(5.836)], '초': 87}
+C:\Users\UK\Apartment price\apart_venv\Lib\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+C:\Users\UK\Apartment price\apart_venv\Lib\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+C:\Users\UK\Apartment price\apart_venv\Lib\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+C:\Users\UK\Apartment price\apart_venv\Lib\site-packages\lightgbm\sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+{'구성': '+ 상권 7개', 'Valid 전체 MAPE': np.float64(4.9471143062704135), 'Valid 전체 n': 32193, 'Valid 기존 단지 MAPE': np.float64(4.878020826626641), 'Valid 기존 단지 n': 31865, 'Valid 처음 보는 단지 MAPE': np.float64(11.659503723492456), 'Valid 처음 보는 단지 n': 328, '홀드아웃 단지 MAPE': np.float64(5.257983875567517), '홀드아웃 단지 10%이내': np.float64(87.22785661739432), '홀드아웃 회차별': [np.float64(5.308), np.float64(5.374), np.float64(5.092)], '초': 103, '상권 gain 순위': {'상권_500m_생활업소': 84, '상권_1km_생활업소': 96, '상권_500m_음식점': 90, '상권_500m_카페': 83, '상권_500m_식료품종합소매': 106, '상권_1km_의원': 98, '상권_1km_사무업소': 81}}

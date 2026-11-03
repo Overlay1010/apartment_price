@@ -278,11 +278,13 @@ v2_trade,분양공고세대_12m_재고천호당,model,06_supply_ratio,"공급 M+
 v2_trade,입주예정_공고기준_24m_재고천호당,model,06_supply_ratio,"공급 M+2, 재고 t년 → t+1년 8월",float64,0.0,False
 v2_trade,미분양_구_재고천호당,model,06_supply_ratio,"공급 M+2, 재고 t년 → t+1년 8월",float64,0.0,False
 v2_trade,준공후미분양_구_재고천호당,model,06_supply_ratio,"공급 M+2, 재고 t년 → t+1년 8월",float64,0.0,False
-v2_trade,직전거래가_동일면적,model,06_last_trade,계약일 30일 전까지 계약된 같은 단지 · 면적 중개거래,float64,0.0481,False
-v2_trade,직전3건중위_동일면적,model,06_last_trade,계약일 30일 전까지 계약된 같은 단지 · 면적 중개거래,float64,0.0481,False
-v2_trade,직전거래_경과일,model,06_last_trade,계약일 30일 전까지 계약된 같은 단지 · 면적 중개거래,float64,0.0481,False
-v2_trade,직전거래_층,model,06_last_trade,계약일 30일 전까지 계약된 같은 단지 · 면적 중개거래,float64,0.0481,False
-v2_trade,동일면적_누적거래수,model,06_last_trade,계약일 30일 전까지 계약된 같은 단지 · 면적 중개거래,float64,0.0481,False
+v2_trade,직전거래가_동일면적,model,06_last_trade,"계약일 30일 전까지 계약된 같은 단지 · 면적 중개거래, 시세 보정은 계약일 전 공표된 구 주간 지수",float64,0.0481,False
+v2_trade,직전3건중위_동일면적,model,06_last_trade,"계약일 30일 전까지 계약된 같은 단지 · 면적 중개거래, 시세 보정은 계약일 전 공표된 구 주간 지수",float64,0.0481,False
+v2_trade,직전거래_경과일,model,06_last_trade,"계약일 30일 전까지 계약된 같은 단지 · 면적 중개거래, 시세 보정은 계약일 전 공표된 구 주간 지수",float64,0.0481,False
+v2_trade,직전거래_층,model,06_last_trade,"계약일 30일 전까지 계약된 같은 단지 · 면적 중개거래, 시세 보정은 계약일 전 공표된 구 주간 지수",float64,0.0481,False
+v2_trade,동일면적_누적거래수,model,06_last_trade,"계약일 30일 전까지 계약된 같은 단지 · 면적 중개거래, 시세 보정은 계약일 전 공표된 구 주간 지수",float64,0.0481,False
+v2_trade,직전거래후_구지수변화,model,06_last_trade,"계약일 30일 전까지 계약된 같은 단지 · 면적 중개거래, 시세 보정은 계약일 전 공표된 구 주간 지수",float64,0.1222,False
+v2_trade,직전거래가_시세보정,model,06_last_trade,"계약일 30일 전까지 계약된 같은 단지 · 면적 중개거래, 시세 보정은 계약일 전 공표된 구 주간 지수",float64,0.1222,False
 v2_region_month,자치구,key,key/meta,-,object,0.0,False
 v2_region_month,예측시점,meta,key/meta,-,datetime64[ns],0.0,False
 v2_region_month,향후3개월_변화율,target,target,-,float64,0.0333,False
@@ -331,6 +333,14 @@ v2_region_month,주담대금리_6개월변화_최근공표,model,06_rate,"기준
 v2_region_month,전세대출금리_최근공표,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0,False
 v2_region_month,전세대출금리_3개월변화_최근공표,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0,False
 v2_region_month,전세대출금리_6개월변화_최근공표,model,06_rate,"기준금리 m-1, 대출금리 m-2",float64,0.0167,False
+v2_region_month,공식_향후3개월_변화율,target,target,-,float64,0.0167,False
+v2_region_month,상승세,target,target,-,float64,0.0167,False
+v2_region_month,강한상승,target,target,-,float64,0.0167,False
+v2_region_month,공식지수_4주변화,model,06_official_index,주간 지수 공표일(월요일 + 3일) < p월 1일,float64,0.1167,False
+v2_region_month,공식지수_13주변화,model,06_official_index,주간 지수 공표일(월요일 + 3일) < p월 1일,float64,0.1167,False
+v2_region_month,공식지수_26주변화,model,06_official_index,주간 지수 공표일(월요일 + 3일) < p월 1일,float64,0.1167,False
+v2_region_month,공식지수_서울_13주변화,model,06_official_index,주간 지수 공표일(월요일 + 3일) < p월 1일,float64,0.1167,False
+v2_region_month,공식지수_4주상승구비율,model,06_official_index,주간 지수 공표일(월요일 + 3일) < p월 1일,float64,0.1167,False
 v2_region_month,기준월,meta,key/meta,-,object,0.0,False
 v2_region_month,권역,model,01_market,"부동산원 m-2, 한은 m-1",object,0.0,False
 v2_region_month,매매수급지수_lag2,model,01_market,"부동산원 m-2, 한은 m-1",float64,0.0,False
