@@ -1,0 +1,29 @@
+{
+ "region_probability": {
+  "show": false,
+  "reason": "어떤 모델도 Test에서 최근 4주 흐름 기준선을 넘지 못함 (6-2 노출 조건 미충족)"
+ },
+ "trend_rank": {
+  "source": "부동산원 주간 아파트 매매가격지수 (KOSIS 408/DT_304004_WEEK_002_C)",
+  "measure": "log(지수_t / 지수_t-4)",
+  "display": "(exp - 1) × 100 %",
+  "top_n": 8,
+  "label": "최근 4주 많이 오른 구",
+  "refresh": "매주 목요일 (기준일 월요일 + 3일)",
+  "history": "trend_baseline_monthly.csv 연도별 적중률을 함께 표시"
+ },
+ "opportunity_signal": {
+  "rule": "중개거래 11 적정가 대비 r = log(실거래 / 적정가) < log(0.95) (기존 단지, 등급 대상)",
+  "context": "그 구의 4주 흐름 순위를 함께 표시",
+  "evidence": "opportunity_evidence.csv",
+  "wording": "모델 기준 적정가보다 싼 거래 — 매수 권유 표현 금지"
+ },
+ "policy_timeline": {
+  "source": "03 정책 이벤트 · policy_event_study_v2.parquet"
+ },
+ "supply_demand": {
+  "source": "부동산원 주간 아파트 수급동향 (KOSIS 408/DT_304004_WEEK_013_C)",
+  "unit": "서울 5개 권역",
+  "neutral": 100
+ }
+}
