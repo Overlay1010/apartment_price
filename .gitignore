@@ -20,3 +20,26 @@ data/external/building_register_title_seoul_*.parquet
 data/external/building_register_recap_raw/
 # 공시가격 서울 아파트 호 단위 원본 (약 63MB) — 노트북 집계 결과만 커밋
 data/external/official_price/apt_official_price_seoul_*.parquet
+
+# 11 회귀 실험 중간 예측 (npy, 재생성 가능) — 결과 CSV와 OOF parquet만 커밋
+notebook/v2_5year_notebook/model/regression/v2_experiments/r11_preds/
+notebook/v2_5year_notebook/model/regression/v2_experiments/r11_roll/
+notebook/v2_5year_notebook/model/regression/v2_experiments/*.npy
+notebook/v2_5year_notebook/model/regression/v2_experiments/r11_oof.parquet
+notebook/v2_5year_notebook/model/regression/v2_experiments/r11_interval_test.parquet
+notebook/v2_5year_notebook/model/regression/v2_experiments/r11_roll2/
+notebook/v2_5year_notebook/model/regression/v2_experiments/r11_oof2.parquet
+notebook/v2_5year_notebook/model/regression/v2_experiments/r11_interval_test2.parquet
+notebook/v2_5year_notebook/model/regression/v2_experiments/lt_feat.parquet
+notebook/v2_5year_notebook/model/regression/v2_experiments/r11_roll3/
+notebook/v2_5year_notebook/model/regression/v2_experiments/r11_oof3.parquet
+# 보완 2 후보 Feature (r11_*_build.py로 재생성)
+notebook/v2_5year_notebook/model/regression/v2_experiments/sg_feat.parquet
+notebook/v2_5year_notebook/model/regression/v2_experiments/hakgu_feat.parquet
+notebook/v2_5year_notebook/model/regression/v2_experiments/kapt_feat.parquet
+notebook/v2_5year_notebook/model/regression/v2_experiments/idx_feat.parquet
+
+# K-apt API 원본 응답 (단지별 JSON 3,415개, 05c_collect_kapt.py 재개용 캐시) — 합친 parquet만 커밋
+data/external/kapt/raw/
+# 학구도 SHP 원본 (공공데이터포털 한국교육시설안전원 15159262~, 약 58MB) — 연계정보 CSV만 커밋
+data/external/schoolzone/*.zip

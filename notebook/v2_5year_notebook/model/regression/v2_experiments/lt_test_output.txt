@@ -1,0 +1,6 @@
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+기존 194 iter 2724 Valid 6.16 중개 5.799 중개 중앙 4.365 신규 11.58 769 초
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
++ 직전 거래 5개 iter 857 Valid 5.242 중개 4.828 중개 중앙 3.491 신규 11.8 1489 초
+
+[exited with code 0]
