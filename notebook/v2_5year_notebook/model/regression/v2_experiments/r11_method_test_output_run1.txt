@@ -1,0 +1,37 @@
+{'평가': 'f0a', '구성': '현재 11', '시드': 42, 'MAPE': np.float64(4.3738438413110785), '10%이내': np.float64(91.84706432019935), 'n': 25684, '초': 40}
+{'평가': 'f0b', '구성': '현재 11', '시드': 42, 'MAPE': np.float64(4.461888944687413), '10%이내': np.float64(91.905976272314), 'n': 27057, '초': 45}
+{'평가': 'f0a', '구성': '현재 11', '시드': 43, 'MAPE': np.float64(4.361982778756462), '10%이내': np.float64(92.06509889425323), 'n': 25684, '초': 40}
+{'평가': 'f0b', '구성': '현재 11', '시드': 43, 'MAPE': np.float64(4.547998833748405), '10%이내': np.float64(91.69900580256495), 'n': 27057, '초': 49}
+{'평가': 'f0a', '구성': '현재 11', '시드': 44, 'MAPE': np.float64(4.376483025529023), '10%이내': np.float64(92.0222706743498), 'n': 25684, '초': 38}
+{'평가': 'f0b', '구성': '현재 11', '시드': 44, 'MAPE': np.float64(4.592646078062212), '10%이내': np.float64(91.51421074028902), 'n': 27057, '초': 42}
+{'평가': 'f1', '구성': '현재 11', '시드': 44, 'MAPE': np.float64(5.516351618587819), '10%이내': np.float64(87.41369012065464), 'n': 41855, '초': 50}
+{'평가': 'f2', '구성': '현재 11', '시드': 44, 'MAPE': np.float64(4.823574442321106), '10%이내': np.float64(89.8052371633585), 'n': 32193, '초': 63}
+{'평가': 'h1', '구성': '현재 11', '시드': 44, 'MAPE': np.float64(4.974218210666816), '10%이내': np.float64(88.79903647625602), 'n': 5812, '초': 50}
+{'평가': 'h2', '구성': '현재 11', '시드': 44, 'MAPE': np.float64(4.979735070509421), '10%이내': np.float64(89.4322284213981), 'n': 6094, '초': 51}
+{'평가': 'h3', '구성': '현재 11', '시드': 44, 'MAPE': np.float64(4.7633734245301715), '10%이내': np.float64(90.61717484165563), 'n': 6789, '초': 51}
+
+===== 현재 11 완료 =====
+Traceback (most recent call last):
+  File "C:\Users\UK\Apartment price\apart_venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: '평가'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\uk\Apartment price\notebook\v2_5year_notebook\model\regression\v2_experiments\r11_method_test.py", line 116, in <module>
+    print(f'\n===== {cfg} 완료 ====='); summary(pd.DataFrame(rows)); sys.stdout.flush()
+                                        ~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\uk\Apartment price\notebook\v2_5year_notebook\model\regression\v2_experiments\r11_method_test.py", line 93, in summary
+    x['개선'] = base.loc[list(zip(x['평가'], x['시드']))].to_numpy() - x['MAPE'].to_numpy()
+                                  ~^^^^^^^^
+  File "C:\Users\UK\Apartment price\apart_venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\UK\Apartment price\apart_venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: '평가'
