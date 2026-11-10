@@ -40,6 +40,7 @@ notebook/v2_5year_notebook/model/regression/v2_experiments/kapt_feat.parquet
 notebook/v2_5year_notebook/model/regression/v2_experiments/idx_feat.parquet
 notebook/v2_5year_notebook/model/regression/v2_experiments/nb_feat.parquet
 notebook/v2_5year_notebook/model/regression/v2_experiments/nb_neighbors.parquet
+notebook/v2_5year_notebook/model/regression/v2_experiments/unit_feat.parquet
 
 # K-apt API 원본 응답 (단지별 JSON 3,415개, 05c_collect_kapt.py 재개용 캐시) — 합친 parquet만 커밋
 data/external/kapt/raw/
