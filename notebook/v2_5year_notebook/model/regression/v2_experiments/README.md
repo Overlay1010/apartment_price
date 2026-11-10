@@ -25,11 +25,17 @@
 | 18 | `r11_noise_check.py` | `r11_noise_check.csv` | 15~17 점검이 학습률 0.06 + 평가 구간 조기 종료(트리 360~400개)라 시드만 바꿔도 f1 0.4%p · 홀드아웃 0.9%p가 흔들림, 난수 열 7개도 같은 "개선" → 15~17 판정 무효 |
 | 19 | `r11_idx_build.py`, `r11_eval_fixed.py` | `idx_feat.parquet`, `r11_eval_fixed.csv` | 본 모델 설정(학습률 0.03, 트리 3,734개 고정, 조기 종료 없음) × 시드 2개로 재비교. 상권 · 배정초 · K-apt 불채택, **직전 거래가 시세 보정 2개 채택** (f1 5.60 → 5.31, f2 4.99 → 4.84, 홀드아웃 5.13 → 4.96%) → 06에 반영 |
 | 20 | `r11_rolling3.py`, `r11_compare_idx.py` | `r11_best_params_idx.json`, `r11_idx_compare.csv`, `r11_idx_by_half.csv` (+ `r11_roll3/*.npy`, 커밋 안 함) | 보완 2 매달 재학습 평가 2022-01~2026-06 (반복 2,080회), v2.2 · 단순 기준선 비교 → 중개 Valid 4.95 → 4.86, Test 5.53 → 5.35% |
+| 21 | `r11_noise_floor.py` | `r11_noise_floor.csv`, `r11_noise_floor_adj.csv`, `r11_noise_floor_output.txt` | 비교 기준: 같은 단지 · 면적 · 같은 달 다른 거래의 실제 가격 평균으로 맞히면 Test 중개 4.47%, 모델 4.86% (같은 달 비교 거래 있는 63%). 비교 거래 없는 기존 단지 6.03% · 신규 단지 13.61% |
+| 22 | `r11_nb_build.py`, `r11_nb_test.py` | `nb_feat.parquet`, `nb_neighbors.parquet` (커밋 안 함), `r11_nb_test.csv`, `r11_nb_test_output.txt` | 보완 3 후보: 단지 모든 면적 시세 보정가 3개 · 같은 구 유사 단지(좌표 · 준공 · 세대수) 시세 보정가 2개, 본 모델 설정 × 시드 2개 → f1 악화 또는 0.1%p 미달로 **불채택** |
+| 23 | `r11_floor_test.py` | `r11_floor_test.csv`, `r11_floor_test_output.txt` | 층 관계 Feature(층 차이 · 상대 층 · 2층 이하), 기준 결과는 22단계 재사용 → f1 악화로 **불채택** |
+| 24 | `r11_unit_build.py`, `r11_unit_test.py` | `unit_feat.parquet` (커밋 안 함), `r11_unit_test.csv`, `r11_unit_test_output.txt` | 보완 4 후보: 호별 공시가격 층별 값 · 층 프리미엄 · 직전 거래 층 대비 비율 · 층 보정 직전 거래가, 기준 결과는 22단계 재사용 → 4개 구성 개선 0.03~0.06%p로 기준 미달, **불채택** |
+| 24-1 | `r11_error_share.py` | `r11_error_share.csv` | 오차 구간별 비중 (매달 재학습 OOF, 중개, 2023~25): 같은 면적 직전 거래 6개월 내 거래가 81%, 오차의 72%. 처음 보는 단지는 오차의 3.7% |
+| 25 | `r11_method_test.py` | `r11_method_test.csv`, `r11_method_test_output.txt` (첫 실행 `_run1`: 기준 11회 뒤 요약 출력 오류로 중단, 결과는 CSV에 이어 씀) | 보완 5: 학습 방법 비교(잔차 학습 · L1 손실 · 최근 거래 가중), 판정 보강(시간 fold 4개 × 시드 3개, 결과 전에 고정) → 모두 **불채택**. 잔차 학습은 평균 +0.117%p지만 f0a가 시드 3개 모두 악화. 기준 모델 f1 시드 간 차이가 0.27%p로 드러남 |
 
 보완 후 `r11_interval4.py`가 만든 `r11_oof2.parquet`(매달 재학습 OOF 예측)를 `models/regression/v2/oof_predictions.parquet`로 복사해 커밋했고 (보완 전 OOF는 커밋하지 않음), 노트북은 그 파일을 읽는다.
 보완 2부터는 `r11_rolling3.py`가 만든 `r11_oof3.parquet`를 같은 위치로 복사했다.
 비교용 v2.2 OOF(`r11_oof2.parquet`, 커밋 안 함)는 `git show v2.2-regression:models/regression/v2/oof_predictions.parquet > r11_oof2.parquet`로 복원한다.
-15~19단계 후보 Feature parquet(`sg_feat` · `hakgu_feat` · `kapt_feat` · `idx_feat`)도 커밋하지 않고 `r11_*_build.py`로 다시 만든다.
+15~19 · 22 · 24단계 후보 Feature parquet(`sg_feat` · `hakgu_feat` · `kapt_feat` · `idx_feat` · `nb_feat` · `unit_feat`)도 커밋하지 않고 `r11_*_build.py`로 다시 만든다.
 
 - **Feature 추가 실험은 본 모델 설정 그대로 돌린다** (`r11_eval_fixed.py`, 결과 CSV에 이어 쓰기). 평가 구간으로 조기 종료하지 않고, 시드 간 차이가 채택 기준(0.1%p)보다 충분히 작은지 먼저 본다.
 
