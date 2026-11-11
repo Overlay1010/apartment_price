@@ -32,10 +32,12 @@
 | 24-1 | `r11_error_share.py` | `r11_error_share.csv` | 오차 구간별 비중 (매달 재학습 OOF, 중개, 2023~25): 같은 면적 직전 거래 6개월 내 거래가 81%, 오차의 72%. 처음 보는 단지는 오차의 3.7% |
 | 25 | `r11_method_test.py` | `r11_method_test.csv`, `r11_method_test_output.txt` (첫 실행 `_run1`: 기준 11회 뒤 요약 출력 오류로 중단, 결과는 CSV에 이어 씀) | 보완 5: 학습 방법 비교(잔차 학습 · L1 손실 · 최근 거래 가중), 판정 보강(시간 fold 4개 × 시드 3개, 결과 전에 고정) → 모두 **불채택**. 잔차 학습은 평균 +0.117%p지만 f0a가 시드 3개 모두 악화. 기준 모델 f1 시드 간 차이가 0.27%p로 드러남 |
 
+| 26 | `r11_resid_build.py`, `r11_resid_test.py` | `resid_feat.parquet` (커밋 안 함), `r11_resid_test.csv`, `r11_resid_test_output.txt` | **V3 추가 시험** (V3 EDA 3에서 "적정가보다 비싸게 거래되던 단지가 계속 더 오름" 관찰 → 1회): 단지 최근 OOF 잔차 평균 · 건수 (계약일 [d−395, d−30]), 보완 5 규칙 → 시간 fold 평균 +0.084%p, f0a −0.007 · f2 +0.020으로 **불채택** |
+
 보완 후 `r11_interval4.py`가 만든 `r11_oof2.parquet`(매달 재학습 OOF 예측)를 `models/regression/v2/oof_predictions.parquet`로 복사해 커밋했고 (보완 전 OOF는 커밋하지 않음), 노트북은 그 파일을 읽는다.
 보완 2부터는 `r11_rolling3.py`가 만든 `r11_oof3.parquet`를 같은 위치로 복사했다.
 비교용 v2.2 OOF(`r11_oof2.parquet`, 커밋 안 함)는 `git show v2.2-regression:models/regression/v2/oof_predictions.parquet > r11_oof2.parquet`로 복원한다.
-15~19 · 22 · 24단계 후보 Feature parquet(`sg_feat` · `hakgu_feat` · `kapt_feat` · `idx_feat` · `nb_feat` · `unit_feat`)도 커밋하지 않고 `r11_*_build.py`로 다시 만든다.
+15~19 · 22 · 24 · 26단계 후보 Feature parquet(`sg_feat` · `hakgu_feat` · `kapt_feat` · `idx_feat` · `nb_feat` · `unit_feat` · `resid_feat`)도 커밋하지 않고 `r11_*_build.py`로 다시 만든다.
 
 - **Feature 추가 실험은 본 모델 설정 그대로 돌린다** (`r11_eval_fixed.py`, 결과 CSV에 이어 쓰기). 평가 구간으로 조기 종료하지 않고, 시드 간 차이가 채택 기준(0.1%p)보다 충분히 작은지 먼저 본다.
 
